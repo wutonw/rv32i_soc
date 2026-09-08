@@ -20,12 +20,6 @@ module alu(
             `ALU_SRA: alu_result = $signed(op1) >>> op2[4:0];
             `ALU_OR : alu_result = op1 | op2;
             `ALU_AND : alu_result = op1 & op2;
-            `ALU_BEQ : alu_result = (op1==op2);
-            `ALU_BNE: alu_result = (op1!=op2);
-            `ALU_BLT: alu_result = ($signed(op1)<$signed(op2));
-            `ALU_BGE: alu_result = ($signed(op1)>=$signed(op2));
-            `ALU_BLTU: alu_result = (op1<op2);
-            `ALU_BGEU: alu_result = (op1>=op2);
             default: alu_result = 32'b0;
         endcase
     end

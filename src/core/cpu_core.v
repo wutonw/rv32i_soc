@@ -13,29 +13,32 @@ module cpu_core(
     wire stall;
     assign inst_addr = pc;
     assign prom_ce = !stall;
-    reg load_use_hazard;
-    assign stall = load_use_hazard;
+    assign stall = 0;
     // ==================================================
     // IF Stage
     reg [31:0] next_pc;
-    wire [31:0] pc;
 
     //flush and next_pc logic
-    wire id_ex_flush = branch_id_ex_flush || load_id_ex_flush;
+    wire id_ex_flush = branch_id_ex_flush;
     reg if_id_flush;
     reg branch_id_ex_flush;
-    reg load_id_ex_flush;
-    always @(*)begin
+
+    wire [31:0] branch_target = id_ex_pc + id_ex_imm;
+    always @(*) begin
+        next_pc = pc + 32'd4;
         if_id_flush = 0;
         branch_id_ex_flush = 0;
-        next_pc = pc + 32'd4;
-        if(id_ex_valid)begin
-            if((id_ex_branch && ex_alu_result[0]) || id_ex_jump)begin
-                next_pc = id_ex_pc + id_ex_imm;
+        if (id_ex_valid) begin
+            if (id_ex_branch && branch_taken) begin
+                next_pc = branch_target;
                 if_id_flush = 1;
                 branch_id_ex_flush = 1;
-            end else if(id_ex_jump_reg)begin
-                next_pc = {ex_alu_result[31:1],1'b0};
+            end else if (id_ex_jump) begin
+                next_pc = branch_target;
+                if_id_flush = 1;
+                branch_id_ex_flush = 1;
+            end else if (id_ex_jump_reg) begin
+                next_pc = {ex_alu_result[31:1], 1'b0};
                 if_id_flush = 1;
                 branch_id_ex_flush = 1;
             end
@@ -245,10 +248,6 @@ module cpu_core(
     reg [31:0] op1;
     reg [31:0] op2;
     wire [31:0] ex_alu_result;
-    // assign op1= (id_ex_alu_src_op1 == 2'b00) ? id_ex_rs1_data :
-    //             (id_ex_alu_src_op1== 2'b01) ? 32'b0 :
-    //             id_ex_pc;
-    // assign op2 = (id_ex_alu_src_op2)? id_ex_imm : id_ex_rs2_data;
     alu u_alu(
         .alu_op(id_ex_alu_op),
         .op1(op1),
@@ -256,68 +255,49 @@ module cpu_core(
         .alu_result(ex_alu_result)
     );
 
-    //forward
-    reg [31:0] ex_store_data;
-    always @(*)begin
-        op1 = (id_ex_alu_src_op1 == 2'b00) ? id_ex_rs1_data :
-                (id_ex_alu_src_op1== 2'b01) ? 32'b0 :
-                id_ex_pc;
-        op2 = (id_ex_alu_src_op2)? id_ex_imm : id_ex_rs2_data;
-        ex_store_data = id_ex_rs2_data;
-        if(!ex_mem_is_load && ex_mem_valid && id_ex_valid && 
-            (ex_mem_rd_addr == id_ex_rs1_addr) && 
-            (ex_mem_rd_addr != 5'b0) && ex_mem_wr_en 
-            && id_ex_use_rs1 && (id_ex_alu_src_op1 == 2'b00))begin
-            // ex/mem forward
-            op1 = ex_mem_alu_result;
-        end else if(mem_wb_valid && id_ex_valid &&
-            (mem_wb_rd_addr == id_ex_rs1_addr) && 
-            (mem_wb_rd_addr != 5'b0) && mem_wb_wr_en 
-            && id_ex_use_rs1 && (id_ex_alu_src_op1 == 2'b00))begin
-            // mem/wb forward
-            op1 = wb_wr_data;
-        end
-        if(!ex_mem_is_load && ex_mem_valid && id_ex_valid && 
-            (ex_mem_rd_addr == id_ex_rs2_addr) && 
-            (ex_mem_rd_addr != 5'b0) && ex_mem_wr_en 
-            && id_ex_use_rs2 && !id_ex_alu_src_op2)begin
-            // ex/mem forward
-            op2 = ex_mem_alu_result;
-        end else if(mem_wb_valid && id_ex_valid &&
-            (mem_wb_rd_addr == id_ex_rs2_addr) && 
-            (mem_wb_rd_addr != 5'b0) && mem_wb_wr_en 
-            && id_ex_use_rs2 && !id_ex_alu_src_op2)begin
-            // mem/wb forward
-            op2 = wb_wr_data;
-        end
+    reg branch_taken;
+    always @(*) begin
+        case (id_ex_alu_op)
+            `ALU_BEQ: branch_taken = (op1 == op2);
+            `ALU_BNE: branch_taken = (op1 != op2);
+            `ALU_BLT: branch_taken = ($signed(op1) < $signed(op2));
+            `ALU_BGE: branch_taken = ($signed(op1) >= $signed(op2));
+            `ALU_BLTU: branch_taken = (op1 < op2);
+            `ALU_BGEU: branch_taken = (op1 >= op2);
+            default: branch_taken = 1'b0;
+        endcase
+    end
 
-        if (id_ex_valid && id_ex_is_store &&
-            ex_mem_valid && ex_mem_wr_en &&
-            !ex_mem_is_load && ex_mem_rd_addr != 5'd0 &&
-            ex_mem_rd_addr == id_ex_rs2_addr) begin
-            // EX/MEM 前递：只适用于 ALU 类结果
-            ex_store_data = ex_mem_alu_result;
-        end else if (id_ex_valid && id_ex_is_store &&
-            mem_wb_valid && mem_wb_wr_en &&
-            mem_wb_rd_addr != 5'd0 &&
-            mem_wb_rd_addr == id_ex_rs2_addr) begin
-            // MEM/WB 前递：包括 load 返回值
-            ex_store_data = wb_wr_data;
-        end
+    //forward
+    // rd_addr->use_rs1/2, rd_addr->add->use_rs1/2, lw->add->use_rs1/2, lw -> use_rs1/2
+    // EX/MEM ALU  -> EX
+    // MEM/WB      -> EX
+    // EX/MEM LOAD -> EX
+    wire ex_forward_valid = id_ex_valid && ex_mem_valid && (ex_mem_rd_addr != 5'b0) && ex_mem_wr_en;
+    wire ex_fwd_rs1 = ex_forward_valid && id_ex_use_rs1 && (ex_mem_rd_addr == id_ex_rs1_addr);
+    wire ex_fwd_rs2 = !id_ex_is_store && ex_forward_valid && id_ex_use_rs2 && (ex_mem_rd_addr == id_ex_rs2_addr);
+    wire wb_forward_valid = id_ex_valid && mem_wb_valid && (mem_wb_rd_addr != 5'b0) && mem_wb_wr_en;
+    wire wb_fwd_rs1 = wb_forward_valid && id_ex_use_rs1 && (mem_wb_rd_addr == id_ex_rs1_addr); 
+    wire wb_fwd_rs2 = !id_ex_is_store && wb_forward_valid && id_ex_use_rs2 && (mem_wb_rd_addr == id_ex_rs2_addr);
+    always @(*)begin
+        case({ex_mem_is_load,ex_fwd_rs1,wb_fwd_rs1})
+            3'b101,3'b001 : op1 = wb_wr_data;
+            3'b011,3'b010 : op1 = ex_mem_alu_result;
+            3'b111,3'b110 : op1 = mem_ram_r_data;
+            default : op1 = (id_ex_alu_src_op1 == 2'b00) ? id_ex_rs1_data :
+                        (id_ex_alu_src_op1== 2'b01) ? 32'b0 :
+                        id_ex_pc;
+        endcase
     end
     always @(*)begin
-        if(if_id_valid && id_ex_valid && id_ex_is_load && 
-            (((id_ex_rd_addr == id_rs1_addr) &&
-            id_use_rs1) || 
-            ((id_ex_rd_addr == id_rs2_addr) && id_use_rs2)) &&
-            (id_ex_rd_addr != 5'b0))begin
-            load_use_hazard = 1;
-            load_id_ex_flush = 1;
-        end else begin
-            load_id_ex_flush = 0;
-            load_use_hazard = 0;
-        end
+        case({ex_mem_is_load,ex_fwd_rs2,wb_fwd_rs2})
+            3'b101,3'b001 : op2 = wb_wr_data;
+            3'b011,3'b010 : op2 = ex_mem_alu_result;
+            3'b111,3'b110 : op2 = mem_ram_r_data;
+            default : op2 = (id_ex_alu_src_op2)? id_ex_imm : id_ex_rs2_data;
+        endcase
     end
+
     // ==================================================
 
     // ==================================================
@@ -348,7 +328,7 @@ module cpu_core(
         .ex_mem_pc(ex_mem_pc),
         .ex_mem_inst(ex_mem_inst),
         .id_ex_rd_addr(id_ex_rd_addr),
-        .ex_store_data(ex_store_data),
+        .id_ex_rs2_data(id_ex_rs2_data),
         .ex_mem_rd_addr(ex_mem_rd_addr),
         .ex_mem_rs2_data(ex_mem_rs2_data),
         .id_ex_wr_en(id_ex_wr_en),
@@ -386,6 +366,8 @@ module cpu_core(
         .ram_w_data(mem_ram_w_data),
         .ram_r_data(mem_raw_ram_r_data)
     );
+    wire store_forward = ex_mem_valid && mem_wb_valid && ex_mem_is_store && (ex_mem_rs2_addr == mem_wb_rd_addr) && (mem_wb_rd_addr != 0) && wb_wr_en;
+    wire [31:0] mem_store_data = (store_forward)? wb_wr_data : ex_mem_rs2_data;
     // ==================================================
 
     // ==================================================
@@ -472,17 +454,17 @@ module cpu_core(
     wire [2:0] tmp = {ex_mem_ext_u,ex_mem_ram_size};
     always @(*)begin
         tmp_ram_s_we = 4'b0;
-        mem_ram_w_data = ex_mem_rs2_data;
+        mem_ram_w_data = mem_store_data;
         mem_store_misaligned = 0;
         if(ex_mem_ram_we)begin
             case(tmp)
                 3'b000:begin
-                    mem_ram_w_data = {4{mem_ram_w_data[7:0]}};
+                    mem_ram_w_data = {4{mem_store_data[7:0]}};
                     tmp_ram_s_we = 4'b0001 << ex_mem_alu_result[1:0];
                 end
                 3'b001:begin
                     if(ex_mem_alu_result[0] == 0)begin
-                        mem_ram_w_data = {2{mem_ram_w_data[15:0]}};
+                        mem_ram_w_data = {2{mem_store_data[15:0]}};
                         tmp_ram_s_we = (ex_mem_alu_result[1]) ? 4'b1100 : 4'b0011;
                     end else begin
                         mem_store_misaligned = 1;
