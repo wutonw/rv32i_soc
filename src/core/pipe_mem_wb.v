@@ -18,7 +18,10 @@ module pipe_mem_wb(
     input wire [4:0] ex_mem_rd_addr,
     output reg [4:0] mem_wb_rd_addr,
     input wire ex_mem_valid,
-    output reg mem_wb_valid
+    output reg mem_wb_valid,
+
+    input wire [31:0] ex_mem_csr_r_data,
+    output reg [31:0] mem_wb_csr_r_data
 );
     always @(posedge clk or negedge rst_n)begin
         if(!rst_n)begin
@@ -35,6 +38,7 @@ module pipe_mem_wb(
             mem_wb_rd_addr <= ex_mem_rd_addr;
             mem_wb_valid <= ex_mem_valid;
             mem_wb_is_load <= ex_mem_is_load;
+            mem_wb_csr_r_data <= ex_mem_csr_r_data;
         end
     end
 

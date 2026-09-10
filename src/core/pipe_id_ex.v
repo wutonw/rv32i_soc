@@ -63,7 +63,10 @@ module pipe_id_ex(
     input wire id_use_rs1,
     input wire id_use_rs2,
     output reg id_ex_use_rs1,
-    output reg id_ex_use_rs2
+    output reg id_ex_use_rs2,
+
+    input wire [31:0] id_csr_r_data,
+    output reg [31:0] id_ex_csr_r_data
 );
     always @(posedge clk or negedge rst_n)begin
         if(!rst_n)begin
@@ -118,6 +121,7 @@ module pipe_id_ex(
             id_ex_alu_op <= id_alu_op;
             id_ex_use_rs1 <= id_use_rs1;
             id_ex_use_rs2 <= id_use_rs2;
+            id_ex_csr_r_data <= id_csr_r_data;
         end
     end
 endmodule

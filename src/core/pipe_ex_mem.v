@@ -33,7 +33,14 @@ module pipe_ex_mem(
     output reg [4:0] ex_mem_rs2_addr,
 
     input wire id_ex_is_load,
-    output reg ex_mem_is_load
+    output reg ex_mem_is_load,
+
+    input wire [31:0] id_ex_csr_r_data,
+    output reg [31:0] ex_mem_csr_r_data,
+
+    input wire id_ex_csr_we,
+    output reg ex_mem_csr_we
+
 );
     always @(posedge clk or negedge rst_n)begin
         if(!rst_n)begin
@@ -45,6 +52,7 @@ module pipe_ex_mem(
             ex_mem_wb_sel <= 2'b0;
             ex_mem_is_store <= 1'b0;
             ex_mem_is_load <= 1'b0;
+            ex_mem_csr_we <= 0;
         end else begin
             ex_mem_alu_result <= ex_alu_result;
             ex_mem_wr_en <= id_ex_wr_en;
@@ -60,6 +68,8 @@ module pipe_ex_mem(
             ex_mem_rs2_data <= id_ex_rs2_data;
             ex_mem_rs2_addr <= id_ex_rs2_addr;
             ex_mem_is_load <= id_ex_is_load;
+            ex_mem_csr_r_data <= id_ex_csr_r_data;
+            ex_mem_csr_we <= id_ex_csr_we;
         end
     end
 

@@ -149,23 +149,21 @@ module cpu_core(
         .rs2_data(id_rs2_data)
     );
 
-    wire [11:0] id_csr_addr;
-    wire [31:0] id_csr_w_data;
-    wire id_csr_we;
+    reg [31:0] id_csr_w_data;
     wire [31:0] id_csr_r_data;
     wire id_trap_enter;
     wire [31:0] id_trap_pc;
     wire [31:0] id_trap_cause;
     wire [31:0] id_trap_vector;
-    wire id_trap_exit;
     wire [31:0] id_mepc_out;
     wire id_global_intr_en;
+    wire csr_we = id_csr_we && if_id_valid;
     csr_file u_csr_file(
         .clk(clk),
         .rst_n(rst_n),
-        .csr_addr(id_csr_addr),
+        .csr_addr(id_csr_addr),//选择
         .csr_w_data(id_csr_w_data),
-        .csr_we(id_csr_we),
+        .csr_we(csr_we),
         .csr_r_data(id_csr_r_data),
         .trap_enter(id_trap_enter),
         .trap_pc(id_trap_pc),
@@ -176,40 +174,66 @@ module cpu_core(
         .global_intr_en(id_global_intr_en)
     );
     //csr
-    wire [31:0] zimm_32 = {27'b0 , rs1_addr};
+    wire [31:0] id_zimm_32 = {27'b0 , if_id_inst[19:15]};
+    reg [31:0] csr_rs1_data;
     always @(*)begin
-        case(inst[14:12])
-            3'b001: csr_w_data = rs1_data;
-            3'b010: csr_w_data = csr_r_data | rs1_data;
-            3'b011: csr_w_data = csr_r_data & ~rs1_data;
-            3'b101: csr_w_data = zimm_32;
-            3'b110: csr_w_data = csr_r_data | zimm_32;
-            3'b111: csr_w_data = csr_r_data & ~zimm_32;
-            default : csr_w_data = csr_r_data;
+        case(if_id_inst[14:12])
+            3'b001: id_csr_w_data = csr_rs1_data;
+            3'b010: id_csr_w_data = id_csr_r_data | csr_rs1_data;
+            3'b011: id_csr_w_data = id_csr_r_data & ~csr_rs1_data;
+            3'b101: id_csr_w_data = id_zimm_32;
+            3'b110: id_csr_w_data = id_csr_r_data | id_zimm_32;
+            3'b111: id_csr_w_data = id_csr_r_data & ~id_zimm_32;
+            default : id_csr_w_data = id_csr_r_data;
         endcase
+    end
+    //csr fwd rs1
+    always @(*) begin
+        csr_rs1_data = id_rs1_data;
+
+        // 最远：WB
+        if (mem_wb_valid &&
+            mem_wb_wr_en &&
+            mem_wb_rd_addr != 0 &&
+            mem_wb_rd_addr == id_rs1_addr)
+            csr_rs1_data = wb_wr_data;
+
+        // 最近：EX/MEM
+        if (ex_mem_valid &&
+            ex_mem_wr_en &&
+            ex_mem_rd_addr != 0 &&
+            ex_mem_rd_addr == id_rs1_addr) begin
+
+            if (ex_mem_is_load)
+                csr_rs1_data = mem_ram_r_data;
+            else if (ex_mem_csr_we)
+                csr_rs1_data = ex_mem_csr_r_data;
+            else
+                csr_rs1_data = ex_mem_alu_result;
+        end
     end
 
     //trap_cause
-    always @(*)begin
-        trap_cause = 0;
-        if(illegal_inst)begin
-            trap_cause = 2;
-        end else if (load_misaligned)begin
-            trap_cause = 4;
-        end else if (store_misaligned)begin
-            trap_cause = 6;
-        end else if (decode_trap_enter)begin
-            if(inst[31:20] == 12'h000)begin
-                //ecall
-                trap_cause = 11;
-            end else if(inst[31:20] == 12'h001)begin
-                //ebreak
-                trap_cause = 3;
-            end
-        end else if (inst_address_misaligned)begin
-            trap_cause = 0;
-        end
-    end
+    // always @(*)begin
+    //     trap_cause = 0;
+    //     if(illegal_inst)begin
+    //         trap_cause = 2;
+    //     end else if (load_misaligned)begin
+    //         trap_cause = 4;
+    //     end else if (store_misaligned)begin
+    //         trap_cause = 6;
+    //     end else if (decode_trap_enter)begin
+    //         if(inst[31:20] == 12'h000)begin
+    //             //ecall
+    //             trap_cause = 11;
+    //         end else if(inst[31:20] == 12'h001)begin
+    //             //ebreak
+    //             trap_cause = 3;
+    //         end
+    //     end else if (inst_address_misaligned)begin
+    //         trap_cause = 0;
+    //     end
+    // end
     // ==================================================
 
     // ==================================================
@@ -242,6 +266,7 @@ module cpu_core(
     wire id_ex_is_store;
     wire id_ex_use_rs1;
     wire id_ex_use_rs2;
+    wire [31:0] id_ex_csr_r_data;
     pipe_id_ex u_pipe_id_ex(
         .clk(clk),
         .rst_n(rst_n),
@@ -302,7 +327,9 @@ module cpu_core(
         .id_use_rs1(id_use_rs1),
         .id_use_rs2(id_use_rs2),
         .id_ex_use_rs1(id_ex_use_rs1),
-        .id_ex_use_rs2(id_ex_use_rs2)
+        .id_ex_use_rs2(id_ex_use_rs2),
+        .id_csr_r_data(id_csr_r_data),
+        .id_ex_csr_r_data(id_ex_csr_r_data)
     );
     // ==================================================
 
@@ -342,10 +369,11 @@ module cpu_core(
     wire wb_forward_valid = id_ex_valid && mem_wb_valid && (mem_wb_rd_addr != 5'b0) && mem_wb_wr_en;
     wire wb_fwd_rs1 = wb_forward_valid && id_ex_use_rs1 && (mem_wb_rd_addr == id_ex_rs1_addr); 
     wire wb_fwd_rs2 = !id_ex_is_store && wb_forward_valid && id_ex_use_rs2 && (mem_wb_rd_addr == id_ex_rs2_addr);
+    wire ex_mem_is_csr = ex_mem_csr_we && ex_mem_valid;
     always @(*)begin
         case({ex_mem_is_load,ex_fwd_rs1,wb_fwd_rs1})
             3'b101,3'b001 : op1 = wb_wr_data;
-            3'b011,3'b010 : op1 = ex_mem_alu_result;
+            3'b011,3'b010 : op1 = (ex_mem_is_csr)? ex_mem_csr_r_data : ex_mem_alu_result;
             3'b111,3'b110 : op1 = mem_ram_r_data;
             default : op1 = (id_ex_alu_src_op1 == 2'b00) ? id_ex_rs1_data :
                         (id_ex_alu_src_op1== 2'b01) ? 32'b0 :
@@ -355,7 +383,7 @@ module cpu_core(
     always @(*)begin
         case({ex_mem_is_load,ex_fwd_rs2,wb_fwd_rs2})
             3'b101,3'b001 : op2 = wb_wr_data;
-            3'b011,3'b010 : op2 = ex_mem_alu_result;
+            3'b011,3'b010 : op2 = (ex_mem_is_csr)? ex_mem_csr_r_data : ex_mem_alu_result;
             3'b111,3'b110 : op2 = mem_ram_r_data;
             default : op2 = (id_ex_alu_src_op2)? id_ex_imm : id_ex_rs2_data;
         endcase
@@ -379,6 +407,8 @@ module cpu_core(
     wire [1:0] ex_mem_wb_sel;
     wire ex_mem_is_load;
     wire ex_mem_is_store;
+    wire [31:0] ex_mem_csr_r_data;
+    wire ex_mem_csr_we;
     pipe_ex_mem u_pipe_ex_mem(
         .clk(clk),
         .rst_n(rst_n),
@@ -409,7 +439,11 @@ module cpu_core(
         .id_ex_rs2_addr(id_ex_rs2_addr),
         .ex_mem_rs2_addr(ex_mem_rs2_addr),
         .id_ex_is_load(id_ex_is_load),
-        .ex_mem_is_load(ex_mem_is_load)
+        .ex_mem_is_load(ex_mem_is_load),
+        .id_ex_csr_r_data(id_ex_csr_r_data),
+        .ex_mem_csr_r_data(ex_mem_csr_r_data),
+        .id_ex_csr_we(id_ex_csr_we),
+        .ex_mem_csr_we(ex_mem_csr_we)
     );
     // ==================================================
 
@@ -443,6 +477,7 @@ module cpu_core(
     wire [4:0] mem_wb_rd_addr;
     wire mem_wb_valid;
     wire mem_wb_is_load;
+    wire [31:0] mem_wb_csr_r_data;
     pipe_mem_wb u_pipe_mem_wb(
         .clk(clk),
         .rst_n(rst_n),
@@ -461,7 +496,9 @@ module cpu_core(
         .ex_mem_rd_addr(ex_mem_rd_addr),
         .mem_wb_rd_addr(mem_wb_rd_addr),
         .ex_mem_valid(ex_mem_valid),
-        .mem_wb_valid(mem_wb_valid)
+        .mem_wb_valid(mem_wb_valid),
+        .ex_mem_csr_r_data(ex_mem_csr_r_data),
+        .mem_wb_csr_r_data(mem_wb_csr_r_data)
     );
     // ==================================================
 
@@ -471,7 +508,7 @@ module cpu_core(
     assign wb_wr_data = (mem_wb_wb_sel == 2'b00)? mem_wb_alu_result :
                     (mem_wb_wb_sel == 2'b01)? mem_wb_ram_r_data :
                     (mem_wb_wb_sel == 2'b10)? wb_pc_plus_4 :
-                    0;//csr_data
+                    mem_wb_csr_r_data;
     assign wb_wr_en = mem_wb_wr_en && mem_wb_valid;
     assign wb_wr_addr = mem_wb_rd_addr;
     // ==================================================
