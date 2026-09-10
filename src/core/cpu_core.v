@@ -17,29 +17,30 @@ module cpu_core(
     // ==================================================
     // IF Stage
     reg [31:0] next_pc;
+    wire id_ex_flush = branch_id_ex_flush;
+    wire if_id_flush = branch_if_id_flush;
 
     //flush and next_pc logic
-    wire id_ex_flush = branch_id_ex_flush;
-    reg if_id_flush;
+    reg branch_if_id_flush;
     reg branch_id_ex_flush;
 
     wire [31:0] branch_target = id_ex_pc + id_ex_imm;
     always @(*) begin
         next_pc = pc + 32'd4;
-        if_id_flush = 0;
+        branch_if_id_flush = 0;
         branch_id_ex_flush = 0;
         if (id_ex_valid) begin
             if (id_ex_branch && branch_taken) begin
                 next_pc = branch_target;
-                if_id_flush = 1;
+                branch_if_id_flush = 1;
                 branch_id_ex_flush = 1;
             end else if (id_ex_jump) begin
                 next_pc = branch_target;
-                if_id_flush = 1;
+                branch_if_id_flush = 1;
                 branch_id_ex_flush = 1;
             end else if (id_ex_jump_reg) begin
                 next_pc = {ex_alu_result[31:1], 1'b0};
-                if_id_flush = 1;
+                branch_if_id_flush = 1;
                 branch_id_ex_flush = 1;
             end
         end
@@ -147,6 +148,68 @@ module cpu_core(
         .rs2_addr(id_rs2_addr),
         .rs2_data(id_rs2_data)
     );
+
+    wire [11:0] id_csr_addr;
+    wire [31:0] id_csr_w_data;
+    wire id_csr_we;
+    wire [31:0] id_csr_r_data;
+    wire id_trap_enter;
+    wire [31:0] id_trap_pc;
+    wire [31:0] id_trap_cause;
+    wire [31:0] id_trap_vector;
+    wire id_trap_exit;
+    wire [31:0] id_mepc_out;
+    wire id_global_intr_en;
+    csr_file u_csr_file(
+        .clk(clk),
+        .rst_n(rst_n),
+        .csr_addr(id_csr_addr),
+        .csr_w_data(id_csr_w_data),
+        .csr_we(id_csr_we),
+        .csr_r_data(id_csr_r_data),
+        .trap_enter(id_trap_enter),
+        .trap_pc(id_trap_pc),
+        .trap_cause(id_trap_cause),
+        .trap_vector(id_trap_vector),
+        .trap_exit(id_trap_exit),
+        .mepc_out(id_mepc_out),
+        .global_intr_en(id_global_intr_en)
+    );
+    //csr
+    wire [31:0] zimm_32 = {27'b0 , rs1_addr};
+    always @(*)begin
+        case(inst[14:12])
+            3'b001: csr_w_data = rs1_data;
+            3'b010: csr_w_data = csr_r_data | rs1_data;
+            3'b011: csr_w_data = csr_r_data & ~rs1_data;
+            3'b101: csr_w_data = zimm_32;
+            3'b110: csr_w_data = csr_r_data | zimm_32;
+            3'b111: csr_w_data = csr_r_data & ~zimm_32;
+            default : csr_w_data = csr_r_data;
+        endcase
+    end
+
+    //trap_cause
+    always @(*)begin
+        trap_cause = 0;
+        if(illegal_inst)begin
+            trap_cause = 2;
+        end else if (load_misaligned)begin
+            trap_cause = 4;
+        end else if (store_misaligned)begin
+            trap_cause = 6;
+        end else if (decode_trap_enter)begin
+            if(inst[31:20] == 12'h000)begin
+                //ecall
+                trap_cause = 11;
+            end else if(inst[31:20] == 12'h001)begin
+                //ebreak
+                trap_cause = 3;
+            end
+        end else if (inst_address_misaligned)begin
+            trap_cause = 0;
+        end
+    end
     // ==================================================
 
     // ==================================================

@@ -41,6 +41,6 @@ module top(
     );
 
     // Status LEDs are reserved for a later firmware/signature hookup.
-    assign led_pass = ^pc[3];
+    assign led_pass = ^pc[2];
     assign led_fail = ~^pc[2];
 endmodule
