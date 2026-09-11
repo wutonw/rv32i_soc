@@ -18,6 +18,7 @@ module decoder(
 
     output reg decode_trap_enter,
     output reg trap_exit,
+    output reg is_csr,
     output reg csr_we,
 
     output wire [4:0] rs1_addr,
@@ -59,6 +60,7 @@ module decoder(
         is_store=0;
         decode_trap_enter=0;
         trap_exit=0;
+        is_csr=0;
         csr_we=0;
         use_rs1=0;
         use_rs2=0;
@@ -206,7 +208,11 @@ module decoder(
                 end else begin
                     if(funct3 != 3'b100 && funct3 != 3'b0 && csr_valid)begin
                         //csr
-                        csr_we = 1;
+                        is_csr = 1;
+                        if (funct3 == 3'b001 || funct3 == 3'b101)
+                            csr_we = 1;
+                        else
+                            csr_we = (rs1_addr != 5'b0);
                         wr_en = 1;
                         wb_sel = 2'b11;
                     end else begin

@@ -91,6 +91,7 @@ module cpu_core(
     wire id_is_store;
     wire id_decode_trap_enter;
     wire id_trap_exit;
+    wire id_is_csr;
     wire id_csr_we;
     wire [4:0] id_rs1_addr;
     wire [4:0] id_rs2_addr;
@@ -116,6 +117,7 @@ module cpu_core(
         .is_store(id_is_store),
         .decode_trap_enter(id_decode_trap_enter),
         .trap_exit(id_trap_exit),
+        .is_csr(id_is_csr),
         .csr_we(id_csr_we),
         .rs1_addr(id_rs1_addr),
         .rs2_addr(id_rs2_addr),
@@ -177,7 +179,7 @@ module cpu_core(
     //csr
     wire [31:0] id_zimm_32 = {27'b0 , if_id_inst[19:15]};
     reg [31:0] csr_rs1_data;
-    wire id_csr_use_rs1 = id_csr_we && (if_id_inst[14:12] < 3'b100);
+    wire id_csr_use_rs1 = id_is_csr && (if_id_inst[14:12] < 3'b100);
     always @(*)begin
         case(if_id_inst[14:12])
             3'b001: id_csr_w_data = csr_rs1_data;
@@ -190,9 +192,9 @@ module cpu_core(
         endcase
     end
     //csr fwd rs1
-    wire csr_load_use_hazard = id_csr_we && if_id_valid && id_ex_valid &&
+    wire csr_load_use_hazard = id_csr_use_rs1 && if_id_valid && id_ex_valid &&
                                 id_ex_is_load && (id_ex_rd_addr != 5'b0) &&
-                                (id_ex_rd_addr == id_rs1_addr) && id_csr_use_rs1;
+                                (id_ex_rd_addr == id_rs1_addr);
     always @(*) begin
         //可以不加valid，会有csr_we兜底
         csr_rs1_data = id_rs1_data;
@@ -275,6 +277,7 @@ module cpu_core(
     wire id_ex_jump_reg;
     wire id_ex_decode_trap_enter;
     wire id_ex_trap_exit;
+    wire id_ex_is_csr;
     wire id_ex_csr_we;
     wire [3:0] id_ex_alu_op;
     wire id_ex_is_load;
@@ -320,6 +323,7 @@ module cpu_core(
         .id_is_store(id_is_store),
         .id_decode_trap_enter(id_decode_trap_enter),
         .id_trap_exit(id_trap_exit),
+        .id_is_csr(id_is_csr),
         .id_csr_we(id_csr_we),
         .id_ex_wr_en(id_ex_wr_en),
         .id_ex_illegal_inst(id_ex_illegal_inst),
@@ -336,6 +340,7 @@ module cpu_core(
         .id_ex_is_store(id_ex_is_store),
         .id_ex_decode_trap_enter(id_ex_decode_trap_enter),
         .id_ex_trap_exit(id_ex_trap_exit),
+        .id_ex_is_csr(id_ex_is_csr),
         .id_ex_csr_we(id_ex_csr_we),
         .id_alu_op(id_alu_op),
         .id_ex_alu_op(id_ex_alu_op),
@@ -384,7 +389,6 @@ module cpu_core(
     wire wb_forward_valid = id_ex_valid && mem_wb_valid && (mem_wb_rd_addr != 5'b0) && mem_wb_wr_en;
     wire wb_fwd_rs1 = wb_forward_valid && id_ex_use_rs1 && (mem_wb_rd_addr == id_ex_rs1_addr); 
     wire wb_fwd_rs2 = !id_ex_is_store && wb_forward_valid && id_ex_use_rs2 && (mem_wb_rd_addr == id_ex_rs2_addr);
-    wire ex_mem_is_csr = ex_mem_csr_we && ex_mem_valid;
     wire fwd_jump_or_reg = ex_mem_jump || ex_mem_jump_reg;
     always @(*)begin
         case({ex_mem_is_load,ex_fwd_rs1,wb_fwd_rs1})
@@ -401,7 +405,9 @@ module cpu_core(
     always @(*)begin
         case({ex_mem_is_load,ex_fwd_rs2,wb_fwd_rs2})
             3'b101,3'b001 : op2 = wb_wr_data;
-            3'b011,3'b010 : op2 = (ex_mem_is_csr)? ex_mem_csr_r_data : ex_mem_alu_result;
+            3'b011,3'b010 : op2 = (ex_mem_is_csr)? ex_mem_csr_r_data :
+                                    (fwd_jump_or_reg) ? ex_mem_pc + 32'd4 :
+                                    ex_mem_alu_result;
             3'b111,3'b110 : op2 = mem_ram_r_data;
             default : op2 = (id_ex_alu_src_op2)? id_ex_imm : id_ex_rs2_data;
         endcase
@@ -427,6 +433,7 @@ module cpu_core(
     wire ex_mem_is_store;
     wire [31:0] ex_mem_csr_r_data;
     wire ex_mem_csr_we;
+    wire ex_mem_is_csr;
     wire ex_mem_jump;
     wire ex_mem_jump_reg;
     pipe_ex_mem u_pipe_ex_mem(
@@ -462,6 +469,8 @@ module cpu_core(
         .ex_mem_is_load(ex_mem_is_load),
         .id_ex_csr_r_data(id_ex_csr_r_data),
         .ex_mem_csr_r_data(ex_mem_csr_r_data),
+        .id_ex_is_csr(id_ex_is_csr),
+        .ex_mem_is_csr(ex_mem_is_csr),
         .id_ex_csr_we(id_ex_csr_we),
         .ex_mem_csr_we(ex_mem_csr_we),
         .id_ex_jump(id_ex_jump),
