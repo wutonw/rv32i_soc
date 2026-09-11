@@ -1,4 +1,5 @@
 `include "define.vh"
+`define NOP 32'b0
 module cpu_core(
     input wire clk,
     input wire rst_n,
@@ -13,11 +14,11 @@ module cpu_core(
     wire stall;
     assign inst_addr = pc;
     assign prom_ce = !stall;
-    assign stall = 0;
+    assign stall = csr_load_use_hazard;
     // ==================================================
     // IF Stage
     reg [31:0] next_pc;
-    wire id_ex_flush = branch_id_ex_flush;
+    wire id_ex_flush = branch_id_ex_flush || csr_load_use_hazard;
     wire if_id_flush = branch_if_id_flush;
 
     //flush and next_pc logic
@@ -157,7 +158,7 @@ module cpu_core(
     wire [31:0] id_trap_vector;
     wire [31:0] id_mepc_out;
     wire id_global_intr_en;
-    wire csr_we = id_csr_we && if_id_valid;
+    wire csr_we = id_csr_we && if_id_valid && !stall && !if_id_flush;
     csr_file u_csr_file(
         .clk(clk),
         .rst_n(rst_n),
@@ -176,6 +177,7 @@ module cpu_core(
     //csr
     wire [31:0] id_zimm_32 = {27'b0 , if_id_inst[19:15]};
     reg [31:0] csr_rs1_data;
+    wire id_csr_use_rs1 = id_csr_we && (if_id_inst[14:12] < 3'b100);
     always @(*)begin
         case(if_id_inst[14:12])
             3'b001: id_csr_w_data = csr_rs1_data;
@@ -188,28 +190,41 @@ module cpu_core(
         endcase
     end
     //csr fwd rs1
+    wire csr_load_use_hazard = id_csr_we && if_id_valid && id_ex_valid &&
+                                id_ex_is_load && (id_ex_rd_addr != 5'b0) &&
+                                (id_ex_rd_addr == id_rs1_addr) && id_csr_use_rs1;
     always @(*) begin
+        //可以不加valid，会有csr_we兜底
         csr_rs1_data = id_rs1_data;
-
-        // 最远：WB
-        if (mem_wb_valid &&
-            mem_wb_wr_en &&
-            mem_wb_rd_addr != 0 &&
-            mem_wb_rd_addr == id_rs1_addr)
-            csr_rs1_data = wb_wr_data;
-
-        // 最近：EX/MEM
-        if (ex_mem_valid &&
-            ex_mem_wr_en &&
-            ex_mem_rd_addr != 0 &&
-            ex_mem_rd_addr == id_rs1_addr) begin
-
-            if (ex_mem_is_load)
-                csr_rs1_data = mem_ram_r_data;
-            else if (ex_mem_csr_we)
-                csr_rs1_data = ex_mem_csr_r_data;
-            else
-                csr_rs1_data = ex_mem_alu_result;
+        if(id_csr_use_rs1)begin
+            if (mem_wb_valid && mem_wb_wr_en &&
+                (mem_wb_rd_addr != 0) &&
+                (mem_wb_rd_addr == id_rs1_addr))begin
+                //WB
+                csr_rs1_data = wb_wr_data;
+            end
+            if (ex_mem_valid && ex_mem_wr_en &&
+                ex_mem_rd_addr != 0 &&
+                ex_mem_rd_addr == id_rs1_addr) begin
+                //MEM
+                case (ex_mem_wb_sel)
+                    2'b00: csr_rs1_data = ex_mem_alu_result;
+                    2'b01: csr_rs1_data = mem_ram_r_data;
+                    2'b10: csr_rs1_data = ex_mem_pc + 32'd4;
+                    2'b11: csr_rs1_data = ex_mem_csr_r_data;
+                endcase
+            end
+            if (!id_ex_is_load && id_ex_valid && id_ex_wr_en &&
+                id_ex_rd_addr != 5'b0 &&
+                id_ex_rd_addr == id_rs1_addr)begin
+                //EX
+                case (id_ex_wb_sel)
+                    2'b00: csr_rs1_data = ex_alu_result;
+                    2'b10: csr_rs1_data = id_ex_pc + 32'd4;
+                    2'b11: csr_rs1_data = id_ex_csr_r_data;
+                    default: csr_rs1_data = id_ex_rs1_data;
+                endcase
+            end
         end
     end
 
@@ -370,10 +385,13 @@ module cpu_core(
     wire wb_fwd_rs1 = wb_forward_valid && id_ex_use_rs1 && (mem_wb_rd_addr == id_ex_rs1_addr); 
     wire wb_fwd_rs2 = !id_ex_is_store && wb_forward_valid && id_ex_use_rs2 && (mem_wb_rd_addr == id_ex_rs2_addr);
     wire ex_mem_is_csr = ex_mem_csr_we && ex_mem_valid;
+    wire fwd_jump_or_reg = ex_mem_jump || ex_mem_jump_reg;
     always @(*)begin
         case({ex_mem_is_load,ex_fwd_rs1,wb_fwd_rs1})
             3'b101,3'b001 : op1 = wb_wr_data;
-            3'b011,3'b010 : op1 = (ex_mem_is_csr)? ex_mem_csr_r_data : ex_mem_alu_result;
+            3'b011,3'b010 : op1 = (ex_mem_is_csr)? ex_mem_csr_r_data :
+                                    (fwd_jump_or_reg) ? ex_mem_pc + 32'd4 :
+                                    ex_mem_alu_result;
             3'b111,3'b110 : op1 = mem_ram_r_data;
             default : op1 = (id_ex_alu_src_op1 == 2'b00) ? id_ex_rs1_data :
                         (id_ex_alu_src_op1== 2'b01) ? 32'b0 :
@@ -409,6 +427,8 @@ module cpu_core(
     wire ex_mem_is_store;
     wire [31:0] ex_mem_csr_r_data;
     wire ex_mem_csr_we;
+    wire ex_mem_jump;
+    wire ex_mem_jump_reg;
     pipe_ex_mem u_pipe_ex_mem(
         .clk(clk),
         .rst_n(rst_n),
@@ -443,7 +463,11 @@ module cpu_core(
         .id_ex_csr_r_data(id_ex_csr_r_data),
         .ex_mem_csr_r_data(ex_mem_csr_r_data),
         .id_ex_csr_we(id_ex_csr_we),
-        .ex_mem_csr_we(ex_mem_csr_we)
+        .ex_mem_csr_we(ex_mem_csr_we),
+        .id_ex_jump(id_ex_jump),
+        .id_ex_jump_reg(id_ex_jump_reg),
+        .ex_mem_jump(ex_mem_jump),
+        .ex_mem_jump_reg(ex_mem_jump_reg)
     );
     // ==================================================
 

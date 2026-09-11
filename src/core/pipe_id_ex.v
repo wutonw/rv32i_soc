@@ -92,7 +92,7 @@ module pipe_id_ex(
             id_ex_use_rs2 <= 0;
         end else if (id_ex_flush)begin
             id_ex_valid <= 1'b0;
-        end else if(!stall)begin
+        end else if(!stall) begin
             id_ex_valid <= if_id_valid;
             id_ex_pc <= if_id_pc;
             id_ex_inst <= if_id_inst;

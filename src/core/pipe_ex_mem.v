@@ -39,7 +39,12 @@ module pipe_ex_mem(
     output reg [31:0] ex_mem_csr_r_data,
 
     input wire id_ex_csr_we,
-    output reg ex_mem_csr_we
+    output reg ex_mem_csr_we,
+
+    input wire id_ex_jump,
+    input wire id_ex_jump_reg,
+    output reg ex_mem_jump,
+    output reg ex_mem_jump_reg
 
 );
     always @(posedge clk or negedge rst_n)begin
@@ -70,6 +75,8 @@ module pipe_ex_mem(
             ex_mem_is_load <= id_ex_is_load;
             ex_mem_csr_r_data <= id_ex_csr_r_data;
             ex_mem_csr_we <= id_ex_csr_we;
+            ex_mem_jump_reg <= id_ex_jump_reg;
+            ex_mem_jump <= id_ex_jump;
         end
     end
 
