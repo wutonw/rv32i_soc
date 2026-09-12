@@ -7,7 +7,7 @@ type=ram_prom
 version=1.0
 
 [Config]
-DEPTH=1024
+DEPTH=8192
 LANG=0
 READ=0
 RESET_MODE=true

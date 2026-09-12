@@ -7,11 +7,11 @@
 
 -mod_name Gowin_pROM
 -file_name gowin_prom
--path D:/aaa1verilog_project/rv32i_cpu/src/gowin_prom/
+-path D:/aaa1verilog_project/rv32i_cpu/src/periph/gowin_prom/
 -type RAM_ROM
 -file_type vlg
 -pROM true
--depth 1024
+-depth 8192
 -width 32
 -read_mode bypass
 -reset_mode sync

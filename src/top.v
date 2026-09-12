@@ -7,7 +7,7 @@ module top(
     wire rst_n;
     wire [31:0] inst_addr;
     wire [31:0] inst;
-    wire [9:0] prom_addr;
+    wire [12:0] prom_addr;
     wire prom_ce;
 
     // Mechanical reset input is active-low; debounce produces a stable
@@ -20,7 +20,7 @@ module top(
 
     // The CPU uses byte addresses.  The pROM stores 32-bit instruction words,
     // so discard the two always-zero byte-offset bits.
-    assign prom_addr = inst_addr[11:2];
+    assign prom_addr = inst_addr[14:2];
 
     Gowin_pROM u_instruction_rom(
         .dout  (inst),

@@ -5,7 +5,7 @@
 //Part Number: GW2A-LV18PG256C8/I7
 //Device: GW2A-18
 //Device Version: C
-//Created Time: Sat Sep  5 12:17:35 2026
+//Created Time: Sat Sep 12 17:44:54 2026
 
 //Change the instance name and port connections to the signal names
 //--------Copy here to design--------
@@ -16,7 +16,7 @@
         .oce(oce), //input oce
         .ce(ce), //input ce
         .reset(reset), //input reset
-        .ad(ad) //input [9:0] ad
+        .ad(ad) //input [12:0] ad
     );
 
 //--------Copy end-------------------

@@ -1,0 +1,45 @@
+OUTPUT_ARCH(riscv)
+ENTRY(_start)
+
+MEMORY
+{
+    ROM  (rx)  : ORIGIN = 0x00000000, LENGTH = 0x5000
+    DATA (rwx) : ORIGIN = 0x00005000, LENGTH = 0x2000
+}
+
+SECTIONS
+{
+    .text ORIGIN(ROM) : ALIGN(4)
+    {
+        KEEP(*(.text.start))
+        *(.text*)
+    } > ROM
+
+    .rodata ORIGIN(DATA) : ALIGN(4)
+    {
+        *(.rodata*)
+    } > DATA
+
+    .data : ALIGN(4)
+    {
+        __data_start = .;
+        *(.data*)
+        *(.sdata*)
+        __data_end = .;
+    } > DATA
+
+    .bss (NOLOAD) : ALIGN(4)
+    {
+        __bss_start = .;
+        *(.bss*)
+        *(COMMON)
+        *(.sbss*)
+        __bss_end = .;
+    } > DATA
+
+    PROVIDE(__stack_bottom = 0x00007000);
+    PROVIDE(__stack_top = 0x00007f00);
+
+    ASSERT(__bss_end <= __stack_bottom,
+           "CoreMark data overlaps the reserved stack")
+}
