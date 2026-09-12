@@ -1,0 +1,487 @@
+Archive member included to satisfy reference by file (symbol)
+
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+                              C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o (__ledf2)
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+                              C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o (__fixdfsi)
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+                              C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o (__fixunsdfsi)
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+                              C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o (__floatsidf)
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+                              C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o (__floatunsidf)
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+                              C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o (__mulsi3)
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+                              C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o (__divsi3)
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+                              D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o) (__clzsi2)
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+                              D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o) (__clz_tab)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccki7eQP.o
+ .data          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccki7eQP.o
+ .bss           0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccki7eQP.o
+ .text          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\cc7bGWBm.o
+ .data          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\cc7bGWBm.o
+ .bss           0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\cc7bGWBm.o
+ .text.initialise_board
+                0x00000000       0x20 C:\Users\wuton\AppData\Local\Temp\cc7bGWBm.o
+ .text          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+ .data          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+ .bss           0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+ .text.memset   0x00000000       0x1c C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+ .text.strlen   0x00000000       0x28 C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+ .text.strcmp   0x00000000       0x40 C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+ .text.strchr   0x00000000       0x2c C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+ .text.strcpy   0x00000000       0x1c C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+ .text.abs      0x00000000       0x10 C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+ .text.labs     0x00000000       0x10 C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+ .text.printf   0x00000000       0x2c C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+ .text.puts     0x00000000        0x8 C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+ .text          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+ .data          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+ .bss           0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+ .text.init_heap_beebs
+                0x00000000       0x2c C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+ .text.check_heap_beebs
+                0x00000000       0x20 C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+ .text.malloc_beebs
+                0x00000000       0x68 C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+ .text.calloc_beebs
+                0x00000000       0xac C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+ .text.realloc_beebs
+                0x00000000       0x64 C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+ .text.free_beebs
+                0x00000000        0x4 C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+ .bss.heap_requested
+                0x00000000        0x4 C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+ .bss.heap_end  0x00000000        0x4 C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+ .bss.heap_ptr  0x00000000        0x4 C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+ .text          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+ .data          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+ .bss           0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+ .text.Min      0x00000000        0xc C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+ .text.Max      0x00000000        0xc C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+ .text.Range_length
+                0x00000000       0x10 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+ .text.MakeRange
+                0x00000000        0xc C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+ .text.FloorPowerOfTwo
+                0x00000000       0x34 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+ .text.BlockSwap
+                0x00000000       0x50 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+ .rodata.max_size
+                0x00000000        0x4 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+ .text          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .text          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+ .text          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .text          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+ .text          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .text          0x00000000       0x24 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .debug_line    0x00000000       0x7a D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .debug_line_str
+                0x00000000      0x18e D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .debug_info    0x00000000       0x31 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .debug_abbrev  0x00000000       0x28 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .debug_aranges
+                0x00000000       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .debug_str     0x00000000      0x1a3 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .riscv.attributes
+                0x00000000       0x1a D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+ .text          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .text          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ROM              0x00000000         0x00008000         xr
+DATA             0x00001000         0x00006000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD C:\Users\wuton\AppData\Local\Temp\ccki7eQP.o
+LOAD C:\Users\wuton\AppData\Local\Temp\cc7bGWBm.o
+LOAD C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+LOAD C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+LOAD C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+LOAD D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32\libm.a
+LOAD D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a
+
+.text           0x00000000     0x243c
+ *(.text.start)
+ .text.start    0x00000000       0x30 C:\Users\wuton\AppData\Local\Temp\ccki7eQP.o
+                0x00000000                _start
+ *(.text*)
+ .text.start_trigger
+                0x00000030       0x14 C:\Users\wuton\AppData\Local\Temp\cc7bGWBm.o
+                0x00000030                start_trigger
+ .text.stop_trigger
+                0x00000044       0x14 C:\Users\wuton\AppData\Local\Temp\cc7bGWBm.o
+                0x00000044                stop_trigger
+ .text.startup.main
+                0x00000058       0x78 C:\Users\wuton\AppData\Local\Temp\cc7bGWBm.o
+                0x00000058                main
+ .text.memcpy   0x000000d0       0x24 C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+                0x000000d0                memcpy
+ .text.memmove  0x000000f4       0x54 C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+                0x000000f4                memmove
+ .text.memcmp   0x00000148       0x34 C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+                0x00000148                memcmp
+ .text.sqrt     0x0000017c       0xc0 C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+                0x0000017c                sqrt
+ .text.rand_beebs
+                0x0000023c       0x60 C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+                0x0000023c                rand_beebs
+ .text.srand_beebs
+                0x0000029c        0xc C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+                0x0000029c                srand_beebs
+ .text.TestCompare
+                0x000002a8       0x10 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x000002a8                TestCompare
+ .text.TestingAscending
+                0x000002b8        0x4 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x000002b8                TestingAscending
+ .text.TestingDescending
+                0x000002bc        0x8 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x000002bc                TestingDescending
+ .text.TestingEqual
+                0x000002c4        0x8 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x000002c4                TestingEqual
+ .text.TestingRandom
+                0x000002cc        0x4 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x000002cc                TestingRandom
+ .text.TestingMostlyDescending
+                0x000002d0       0x5c C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x000002d0                TestingMostlyDescending
+ .text.TestingMostlyAscending
+                0x0000032c       0x5c C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x0000032c                TestingMostlyAscending
+ .text.TestingJittered
+                0x00000388       0x28 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x00000388                TestingJittered
+ .text.TestingMostlyEqual
+                0x000003b0       0x30 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x000003b0                TestingMostlyEqual
+ .text.TestingPathological
+                0x000003e0       0x38 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x000003e0                TestingPathological
+ .text.BinaryFirst
+                0x00000418       0xf4 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x00000418                BinaryFirst
+ .text.BinaryLast
+                0x0000050c       0xf4 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x0000050c                BinaryLast
+ .text.InsertionSort
+                0x00000600      0x128 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x00000600                InsertionSort
+ .text.Reverse  0x00000728       0x7c C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x00000728                Reverse
+ .text.Rotate   0x000007a4      0x194 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x000007a4                Rotate
+ .text.WikiMerge
+                0x00000938      0x2b4 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x00000938                WikiMerge
+ .text.WikiSort
+                0x00000bec     0x119c C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x00000bec                WikiSort
+ .text.benchmark_body.isra.0
+                0x00001d88      0x144 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+ .text.verify_benchmark
+                0x00001ecc       0x78 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x00001ecc                verify_benchmark
+ .text.initialise_benchmark
+                0x00001f44        0x4 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x00001f44                initialise_benchmark
+ .text.warm_caches
+                0x00001f48        0xc C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x00001f48                warm_caches
+ .text.benchmark
+                0x00001f54       0x24 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x00001f54                benchmark
+ .text.__ledf2  0x00001f78      0x118 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+                0x00001f78                __ledf2
+                0x00001f78                __ltdf2
+ .text.__fixdfsi
+                0x00002090       0x80 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+                0x00002090                __fixdfsi
+ .text.__fixunsdfsi
+                0x00002110       0x70 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+                0x00002110                __fixunsdfsi
+ .text.__floatsidf
+                0x00002180       0xe0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+                0x00002180                __floatsidf
+ .text.__floatunsidf
+                0x00002260       0xa0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+                0x00002260                __floatunsidf
+ .text          0x00002300       0xb4 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+                0x00002300                __divsi3
+                0x00002308                __udivsi3
+                0x00002308                __hidden___udivsi3
+                0x00002350                __umodsi3
+                0x00002384                __modsi3
+ .text.__clzsi2
+                0x000023b4       0x88 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+                0x000023b4                __clzsi2
+
+.rodata         0x00001000      0xda4
+ *(.rodata*)
+ .rodata        0x00001000      0xca4 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+ .rodata.__clz_tab
+                0x00001ca4      0x100 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+                0x00001ca4                __clz_tab
+
+.rela.dyn       0x00001da4        0x0
+ .rela.text.start
+                0x00001da4        0x0 C:\Users\wuton\AppData\Local\Temp\ccki7eQP.o
+
+.data           0x00001da4        0x0
+                0x00001da4                        __data_start = .
+ *(.data*)
+ *(.sdata*)
+                0x00001da4                        __data_end = .
+
+.bss            0x00001da4      0xc84
+                0x00001da4                        __bss_start = .
+ *(.bss*)
+ .bss.seed      0x00001da4        0x4 C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+ .bss.array1    0x00001da8      0xc80 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                0x00001da8                array1
+ *(COMMON)
+ *(.sbss*)
+                0x00002a28                        __bss_end = .
+                0x00007000                        PROVIDE (__stack_bottom = 0x7000)
+                0x00007f00                        PROVIDE (__stack_top = 0x7f00)
+                0x00000001                        ASSERT ((SIZEOF (.text) <= LENGTH (ROM)), Embench program exceeds the 32 KiB instruction pROM)
+                0x00000001                        ASSERT ((__bss_end <= __stack_bottom), Embench data overlaps the reserved stack)
+OUTPUT(D:\aaa1verilog_project\rv32i_cpu\benchmark\embench\build\wikisort\wikisort.elf elf32-littleriscv)
+
+.riscv.attributes
+                0x00000000       0x1c
+ .riscv.attributes
+                0x00000000       0x1a C:\Users\wuton\AppData\Local\Temp\ccki7eQP.o
+ .riscv.attributes
+                0x0000001a       0x1c C:\Users\wuton\AppData\Local\Temp\cc7bGWBm.o
+ .riscv.attributes
+                0x00000036       0x1c C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+ .riscv.attributes
+                0x00000052       0x1c C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+ .riscv.attributes
+                0x0000006e       0x1c C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+ .riscv.attributes
+                0x0000008a       0x1c D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .riscv.attributes
+                0x000000a6       0x1c D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+ .riscv.attributes
+                0x000000c2       0x1c D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .riscv.attributes
+                0x000000de       0x1c D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+ .riscv.attributes
+                0x000000fa       0x1c D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .riscv.attributes
+                0x00000116       0x1a D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+ .riscv.attributes
+                0x00000130       0x1c D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .riscv.attributes
+                0x0000014c       0x1c D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+
+.comment        0x00000000       0x33
+ .comment       0x00000000       0x33 C:\Users\wuton\AppData\Local\Temp\cc7bGWBm.o
+                                 0x34 (size before relaxing)
+ .comment       0x00000033        0x0 C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+                                 0x34 (size before relaxing)
+ .comment       0x00000033        0x0 C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+                                 0x34 (size before relaxing)
+ .comment       0x00000033        0x0 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+                                 0x34 (size before relaxing)
+ .comment       0x00000033        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+                                 0x34 (size before relaxing)
+ .comment       0x00000033        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+                                 0x34 (size before relaxing)
+ .comment       0x00000033        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+                                 0x34 (size before relaxing)
+ .comment       0x00000033        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+                                 0x34 (size before relaxing)
+ .comment       0x00000033        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+                                 0x34 (size before relaxing)
+ .comment       0x00000033        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+                                 0x34 (size before relaxing)
+ .comment       0x00000033        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+                                 0x34 (size before relaxing)
+
+.note.GNU-stack
+                0x00000000        0x0
+ .note.GNU-stack
+                0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\cc7bGWBm.o
+ .note.GNU-stack
+                0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccYVu7G2.o
+ .note.GNU-stack
+                0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\cc1VaPmR.o
+ .note.GNU-stack
+                0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccQmQ7n1.o
+ .note.GNU-stack
+                0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .note.GNU-stack
+                0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+ .note.GNU-stack
+                0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .note.GNU-stack
+                0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+ .note.GNU-stack
+                0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .note.GNU-stack
+                0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .note.GNU-stack
+                0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+
+.debug_info     0x00000000      0xdcf
+ .debug_info    0x00000000      0x25e D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_info    0x0000025e      0x1e7 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+ .debug_info    0x00000445      0x1ca D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_info    0x0000060f      0x289 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+ .debug_info    0x00000898      0x27e D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_info    0x00000b16       0x5f D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+ .debug_info    0x00000b75      0x168 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .debug_info    0x00000cdd       0xf2 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+
+.debug_abbrev   0x00000000      0x898
+ .debug_abbrev  0x00000000      0x172 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_abbrev  0x00000172      0x159 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+ .debug_abbrev  0x000002cb      0x171 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_abbrev  0x0000043c      0x173 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+ .debug_abbrev  0x000005af      0x172 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_abbrev  0x00000721       0x28 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+ .debug_abbrev  0x00000749       0xd9 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .debug_abbrev  0x00000822       0x76 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+
+.debug_loclists
+                0x00000000      0x7d1
+ .debug_loclists
+                0x00000000      0x1d9 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_loclists
+                0x000001d9      0x135 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+ .debug_loclists
+                0x0000030e       0xc6 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_loclists
+                0x000003d4      0x1a8 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+ .debug_loclists
+                0x0000057c      0x172 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_loclists
+                0x000006ee       0xe3 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+
+.debug_aranges  0x00000000       0xf8
+ .debug_aranges
+                0x00000000       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_aranges
+                0x00000020       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+ .debug_aranges
+                0x00000040       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_aranges
+                0x00000060       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+ .debug_aranges
+                0x00000080       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_aranges
+                0x000000a0       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+ .debug_aranges
+                0x000000c0       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .debug_aranges
+                0x000000e0       0x18 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+
+.debug_rnglists
+                0x00000000      0x1ca
+ .debug_rnglists
+                0x00000000       0x4a D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_rnglists
+                0x0000004a       0x2c D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+ .debug_rnglists
+                0x00000076       0x1f D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_rnglists
+                0x00000095       0x99 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+ .debug_rnglists
+                0x0000012e       0x72 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_rnglists
+                0x000001a0       0x2a D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+
+.debug_line     0x00000000     0x122d
+ .debug_line    0x00000000      0x43a D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_line    0x0000043a      0x29b D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+ .debug_line    0x000006d5      0x1e1 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_line    0x000008b6      0x371 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+ .debug_line    0x00000c27      0x30b D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_line    0x00000f32      0x153 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+ .debug_line    0x00001085      0x15f D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .debug_line    0x000011e4       0x49 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+
+.debug_str      0x00000000      0x4ff
+ .debug_str     0x00000000      0x4ff D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+                                0x1f2 (size before relaxing)
+ .debug_str     0x000004ff        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+                                0x1c9 (size before relaxing)
+ .debug_str     0x000004ff        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+                                0x1c5 (size before relaxing)
+ .debug_str     0x000004ff        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+                                0x266 (size before relaxing)
+ .debug_str     0x000004ff        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+                                0x261 (size before relaxing)
+ .debug_str     0x000004ff        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+                                0x1d0 (size before relaxing)
+ .debug_str     0x000004ff        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+                                0x1ec (size before relaxing)
+ .debug_str     0x000004ff        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+                                0x1cf (size before relaxing)
+
+.debug_line_str
+                0x00000000      0x701
+ .debug_line_str
+                0x00000000      0x701 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+                                0x24a (size before relaxing)
+ .debug_line_str
+                0x00000701        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+                                0x24a (size before relaxing)
+ .debug_line_str
+                0x00000701        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+                                0x250 (size before relaxing)
+ .debug_line_str
+                0x00000701        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+                                0x24e (size before relaxing)
+ .debug_line_str
+                0x00000701        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+                                0x252 (size before relaxing)
+ .debug_line_str
+                0x00000701        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+                                0x18b (size before relaxing)
+ .debug_line_str
+                0x00000701        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+                                0x231 (size before relaxing)
+ .debug_line_str
+                0x00000701        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+                                0x231 (size before relaxing)
+
+.debug_frame    0x00000000       0xf0
+ .debug_frame   0x00000000       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_frame   0x00000020       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixdfsi.o)
+ .debug_frame   0x00000040       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_frame   0x00000060       0x38 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatsidf.o)
+ .debug_frame   0x00000098       0x38 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_frame   0x000000d0       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)

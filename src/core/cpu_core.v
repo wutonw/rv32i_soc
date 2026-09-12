@@ -54,6 +54,34 @@ module cpu_core(
         .next_pc(next_pc),
         .pc(pc)
     );
+
+    // trap u_trap(
+    //     .id_illegal_inst(id_illegal_inst),
+    //     .id_decode_trap_enter(id_decode_trap_enter),
+    //     .mem_load_misaligned(mem_load_misaligned),
+    //     .mem_load_misaligned(mem_load_misaligned),
+    // );
+    //trap_cause
+    // always @(*)begin
+    //     trap_cause = 0;
+    //     if(illegal_inst)begin
+    //         trap_cause = 2;
+    //     end else if (load_misaligned)begin
+    //         trap_cause = 4;
+    //     end else if (store_misaligned)begin
+    //         trap_cause = 6;
+    //     end else if (decode_trap_enter)begin
+    //         if(inst[31:20] == 12'h000)begin
+    //             //ecall
+    //             trap_cause = 11;
+    //         end else if(inst[31:20] == 12'h001)begin
+    //             //ebreak
+    //             trap_cause = 3;
+    //         end
+    //     end else if (inst_address_misaligned)begin
+    //         trap_cause = 0;
+    //     end
+    // end
     // ==================================================
 
     // ==================================================
@@ -234,27 +262,6 @@ module cpu_core(
         end
     end
 
-    //trap_cause
-    // always @(*)begin
-    //     trap_cause = 0;
-    //     if(illegal_inst)begin
-    //         trap_cause = 2;
-    //     end else if (load_misaligned)begin
-    //         trap_cause = 4;
-    //     end else if (store_misaligned)begin
-    //         trap_cause = 6;
-    //     end else if (decode_trap_enter)begin
-    //         if(inst[31:20] == 12'h000)begin
-    //             //ecall
-    //             trap_cause = 11;
-    //         end else if(inst[31:20] == 12'h001)begin
-    //             //ebreak
-    //             trap_cause = 3;
-    //         end
-    //     end else if (inst_address_misaligned)begin
-    //         trap_cause = 0;
-    //     end
-    // end
     // ==================================================
 
     // ==================================================

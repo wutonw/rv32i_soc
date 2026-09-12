@@ -1,0 +1,502 @@
+Archive member included to satisfy reference by file (symbol)
+
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+                              C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o (__ledf2)
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+                              C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o (__fixunsdfsi)
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+                              C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o (__floatunsidf)
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+                              C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o (__mulsi3)
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+                              C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o (__umodsi3)
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+                              D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o) (__clzsi2)
+D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+                              D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o) (__clz_tab)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccISil6I.o
+ .data          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccISil6I.o
+ .bss           0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccISil6I.o
+ .text          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccxazI4D.o
+ .data          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccxazI4D.o
+ .bss           0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccxazI4D.o
+ .text.initialise_board
+                0x00000000       0x20 C:\Users\wuton\AppData\Local\Temp\ccxazI4D.o
+ .text          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .data          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .bss           0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .text.memmove  0x00000000       0x54 C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .text.memset   0x00000000       0x1c C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .text.strlen   0x00000000       0x28 C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .text.strcmp   0x00000000       0x40 C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .text.strchr   0x00000000       0x2c C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .text.strcpy   0x00000000       0x1c C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .text.abs      0x00000000       0x10 C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .text.labs     0x00000000       0x10 C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .text.printf   0x00000000       0x2c C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .text.puts     0x00000000        0x8 C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .text.sqrt     0x00000000       0xcc C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .text          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+ .data          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+ .bss           0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+ .text.rand_beebs
+                0x00000000       0x60 C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+ .text.srand_beebs
+                0x00000000        0xc C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+ .text.calloc_beebs
+                0x00000000       0xac C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+ .text.realloc_beebs
+                0x00000000       0x64 C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+ .text.free_beebs
+                0x00000000        0x4 C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+ .bss.seed      0x00000000        0x4 C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+ .text          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .data          0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .bss           0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib___rbtree_fix_left_deletion_discrepancy
+                0x00000000      0x1bc C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib___rbtree_fix_right_deletion_discrepancy
+                0x00000000      0x1bc C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib___rbtree_delete_rightmost_leaf
+                0x00000000       0xa0 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib___rbtree_consistency_check_recursive
+                0x00000000      0x154 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_add
+                0x00000000       0x40 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_add_after
+                0x00000000       0x40 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_add_before
+                0x00000000       0x40 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_add_if_not_member
+                0x00000000       0x9c C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_add_after_if_not_member
+                0x00000000       0x9c C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_add_before_if_not_member
+                0x00000000        0x8 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_concat
+                0x00000000       0x3c C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_delete
+                0x00000000       0x50 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_delete_if_member
+                0x00000000       0xac C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_is_member
+                0x00000000       0x54 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_find_member
+                0x00000000       0x58 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_get_first
+                0x00000000       0x20 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_get_last
+                0x00000000       0x20 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_len
+                0x00000000       0x40 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_reverse
+                0x00000000       0x54 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_it_current
+                0x00000000        0x8 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_it_next
+                0x00000000      0x130 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_it_init_on_equal
+                0x00000000       0x24 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_it_init
+                0x00000000       0x24 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.ilist_hash_function
+                0x00000000        0x8 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_ilist_is_member
+                0x00000000       0x20 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_ilist_find_member
+                0x00000000       0x20 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_ilist_add_if_not_member
+                0x00000000       0x48 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_ilist_add
+                0x00000000       0x10 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_ilist_concat
+                0x00000000       0x24 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_ilist_delete
+                0x00000000       0x2c C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_ilist_delete_if_member
+                0x00000000       0x48 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_ilist_sort
+                0x00000000      0x150 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_ilist_len
+                0x00000000       0x20 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_ilist_reverse
+                0x00000000       0x2c C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_ilist_it_init
+                0x00000000       0x24 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_ilist_it_current
+                0x00000000        0x8 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_ilist_it_next
+                0x00000000       0xbc C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_ilist_it_init_on_equal
+                0x00000000       0x14 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_hashed_ilist_init
+                0x00000000       0x14 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_hashed_ilist_add
+                0x00000000       0x50 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_hashed_ilist_add_if_not_member
+                0x00000000       0xac C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_hashed_ilist_delete
+                0x00000000       0x6c C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_hashed_ilist_delete_if_member
+                0x00000000       0x9c C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_hashed_ilist_is_member
+                0x00000000       0x60 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_hashed_ilist_find_member
+                0x00000000       0x60 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_hashed_ilist_it_current
+                0x00000000        0x8 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_hashed_ilist_it_next
+                0x00000000       0x98 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_hashed_ilist_it_init_on_equal
+                0x00000000       0x64 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_hashed_ilist_it_init
+                0x00000000       0x64 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_iq_init
+                0x00000000        0xc C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_iq_is_empty
+                0x00000000       0x14 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_iq_is_full
+                0x00000000       0x40 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_iq_first_element
+                0x00000000       0x14 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_iq_first_element_ptr
+                0x00000000       0x10 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_iq_add_next
+                0x00000000       0x44 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_iq_add
+                0x00000000       0x54 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_iq_delete_first
+                0x00000000       0x40 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_iq_delete
+                0x00000000       0x40 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib___rbtree_delete_recursive
+                0x00000000      0x130 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_rbtree_add
+                0x00000000       0x34 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_rbtree_delete
+                0x00000000       0x34 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_rbtree_find_member
+                0x00000000       0x30 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_rbtree_is_member
+                0x00000000       0x4c C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_rbtree_delete_if_member
+                0x00000000       0x78 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_rbtree_add_if_not_member
+                0x00000000       0x7c C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_rbtree_len
+                0x00000000       0xc8 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib__rbtree_it_init
+                0x00000000      0x148 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_rbtree_it_init
+                0x00000000       0x64 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_rbtree_it_init_preorder
+                0x00000000       0x38 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_rbtree_it_init_inorder
+                0x00000000       0x60 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_rbtree_it_init_postorder
+                0x00000000       0x64 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_rbtree_it_init_on_equal
+                0x00000000       0x14 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_rbtree_it_current
+                0x00000000        0x8 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_rbtree_it_next
+                0x00000000       0x28 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib___rbtree_consistency_check
+                0x00000000       0x3c C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .text.__ledf2  0x00000000      0x118 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_info    0x00000000      0x25e D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_abbrev  0x00000000      0x172 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_loclists
+                0x00000000      0x1d9 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_aranges
+                0x00000000       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_rnglists
+                0x00000000       0x4a D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_line    0x00000000      0x43a D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_str     0x00000000      0x1f2 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_line_str
+                0x00000000      0x24a D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .comment       0x00000000       0x34 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .note.GNU-stack
+                0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .debug_frame   0x00000000       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .riscv.attributes
+                0x00000000       0x1c D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(ledf2.o)
+ .text          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .text.__fixunsdfsi
+                0x00000000       0x70 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_info    0x00000000      0x1ca D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_abbrev  0x00000000      0x171 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_loclists
+                0x00000000       0xc6 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_aranges
+                0x00000000       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_rnglists
+                0x00000000       0x1f D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_line    0x00000000      0x1e1 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_str     0x00000000      0x1c5 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_line_str
+                0x00000000      0x250 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .comment       0x00000000       0x34 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .note.GNU-stack
+                0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .debug_frame   0x00000000       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .riscv.attributes
+                0x00000000       0x1c D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(fixunsdfsi.o)
+ .text          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .text.__floatunsidf
+                0x00000000       0xa4 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_info    0x00000000      0x27e D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_abbrev  0x00000000      0x172 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_loclists
+                0x00000000      0x172 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_aranges
+                0x00000000       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_rnglists
+                0x00000000       0x72 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_line    0x00000000      0x30b D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_str     0x00000000      0x261 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_line_str
+                0x00000000      0x252 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .comment       0x00000000       0x34 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .note.GNU-stack
+                0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .debug_frame   0x00000000       0x38 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .riscv.attributes
+                0x00000000       0x1c D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(floatunsidf.o)
+ .text          0x00000000       0x24 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .debug_line    0x00000000       0x7a D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .debug_line_str
+                0x00000000      0x18e D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .debug_info    0x00000000       0x31 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .debug_abbrev  0x00000000       0x28 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .debug_aranges
+                0x00000000       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .debug_str     0x00000000      0x1a3 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .riscv.attributes
+                0x00000000       0x1a D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(muldi3.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+ .text          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .text.__clzsi2
+                0x00000000       0x88 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .debug_info    0x00000000      0x168 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .debug_abbrev  0x00000000       0xd9 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .debug_loclists
+                0x00000000       0xe3 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .debug_aranges
+                0x00000000       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .debug_rnglists
+                0x00000000       0x2a D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .debug_line    0x00000000      0x15f D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .debug_str     0x00000000      0x1ec D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .debug_line_str
+                0x00000000      0x231 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .comment       0x00000000       0x34 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .note.GNU-stack
+                0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .debug_frame   0x00000000       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .riscv.attributes
+                0x00000000       0x1c D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clzsi2.o)
+ .text          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+ .data          0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+ .bss           0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+ .rodata.__clz_tab
+                0x00000000      0x100 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+ .debug_info    0x00000000       0xf2 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+ .debug_abbrev  0x00000000       0x76 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+ .debug_aranges
+                0x00000000       0x18 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+ .debug_line    0x00000000       0x49 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+ .debug_str     0x00000000      0x1cf D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+ .debug_line_str
+                0x00000000      0x231 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+ .comment       0x00000000       0x34 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+ .note.GNU-stack
+                0x00000000        0x0 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+ .riscv.attributes
+                0x00000000       0x1c D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(_clz.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ROM              0x00000000         0x00008000         xr
+DATA             0x00001000         0x00006000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD C:\Users\wuton\AppData\Local\Temp\ccISil6I.o
+LOAD C:\Users\wuton\AppData\Local\Temp\ccxazI4D.o
+LOAD C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+LOAD C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+LOAD C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+LOAD D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/lib/rv32i/ilp32\libm.a
+LOAD D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a
+
+.text           0x00000000      0xfb8
+ *(.text.start)
+ .text.start    0x00000000       0x30 C:\Users\wuton\AppData\Local\Temp\ccISil6I.o
+                0x00000000                _start
+ *(.text*)
+ .text.start_trigger
+                0x00000030       0x14 C:\Users\wuton\AppData\Local\Temp\ccxazI4D.o
+                0x00000030                start_trigger
+ .text.stop_trigger
+                0x00000044       0x14 C:\Users\wuton\AppData\Local\Temp\ccxazI4D.o
+                0x00000044                stop_trigger
+ .text.startup.main
+                0x00000058       0x78 C:\Users\wuton\AppData\Local\Temp\ccxazI4D.o
+                0x00000058                main
+ .text.memcpy   0x000000d0       0x24 C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+                0x000000d0                memcpy
+ .text.memcmp   0x000000f4       0x34 C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+                0x000000f4                memcmp
+ .text.init_heap_beebs
+                0x00000128       0x2c C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+                0x00000128                init_heap_beebs
+ .text.check_heap_beebs
+                0x00000154       0x20 C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+                0x00000154                check_heap_beebs
+ .text.malloc_beebs
+                0x00000174       0x68 C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+                0x00000174                malloc_beebs
+ .text.sglib___rbtree_add_recursive.constprop.0
+                0x000001dc      0x1fc C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.sglib_dllist_sort
+                0x000003d8      0x184 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+                0x000003d8                sglib_dllist_sort
+ .text.sglib__rbtree_it_compute_current_elem
+                0x0000055c      0x194 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+                0x0000055c                sglib__rbtree_it_compute_current_elem
+ .text.benchmark_body
+                0x000006f0      0x6ec C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .text.verify_benchmark
+                0x00000ddc      0x10c C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+                0x00000ddc                verify_benchmark
+ .text.initialise_benchmark
+                0x00000ee8        0x4 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+                0x00000ee8                initialise_benchmark
+ .text.warm_caches
+                0x00000eec        0xc C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+                0x00000eec                warm_caches
+ .text.benchmark
+                0x00000ef8        0xc C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+                0x00000ef8                benchmark
+ .text          0x00000f04       0xb4 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+                0x00000f04                __divsi3
+                0x00000f0c                __udivsi3
+                0x00000f0c                __hidden___udivsi3
+                0x00000f54                __umodsi3
+                0x00000f88                __modsi3
+
+.rodata         0x00001000      0x320
+ *(.rodata*)
+ .rodata.array_exp.0
+                0x00001000      0x190 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .rodata.array  0x00001190      0x190 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+
+.rela.dyn       0x00001320        0x0
+ .rela.text.start
+                0x00001320        0x0 C:\Users\wuton\AppData\Local\Temp\ccISil6I.o
+
+.data           0x00001320        0x0
+                0x00001320                        __data_start = .
+ *(.data*)
+ *(.sdata*)
+                0x00001320                        __data_end = .
+
+.bss            0x00001320     0x21f0
+                0x00001320                        __bss_start = .
+ *(.bss*)
+ .bss.heap_requested
+                0x00001320        0x4 C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+ .bss.heap_end  0x00001324        0x4 C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+ .bss.heap_ptr  0x00001328        0x4 C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+ .bss.htab      0x0000132c       0x50 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+                0x0000132c                htab
+ .bss.the_list  0x0000137c        0x4 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+                0x0000137c                the_list
+ .bss.array2    0x00001380      0x190 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+                0x00001380                array2
+ .bss.heap      0x00001510     0x2000 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ *(COMMON)
+ *(.sbss*)
+                0x00003510                        __bss_end = .
+                0x00007000                        PROVIDE (__stack_bottom = 0x7000)
+                0x00007f00                        PROVIDE (__stack_top = 0x7f00)
+                0x00000001                        ASSERT ((SIZEOF (.text) <= LENGTH (ROM)), Embench program exceeds the 32 KiB instruction pROM)
+                0x00000001                        ASSERT ((__bss_end <= __stack_bottom), Embench data overlaps the reserved stack)
+OUTPUT(D:\aaa1verilog_project\rv32i_cpu\benchmark\embench\build\sglib-combined\sglib-combined.elf elf32-littleriscv)
+
+.riscv.attributes
+                0x00000000       0x1c
+ .riscv.attributes
+                0x00000000       0x1a C:\Users\wuton\AppData\Local\Temp\ccISil6I.o
+ .riscv.attributes
+                0x0000001a       0x1c C:\Users\wuton\AppData\Local\Temp\ccxazI4D.o
+ .riscv.attributes
+                0x00000036       0x1c C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .riscv.attributes
+                0x00000052       0x1c C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+ .riscv.attributes
+                0x0000006e       0x1c C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+ .riscv.attributes
+                0x0000008a       0x1a D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+
+.comment        0x00000000       0x33
+ .comment       0x00000000       0x33 C:\Users\wuton\AppData\Local\Temp\ccxazI4D.o
+                                 0x34 (size before relaxing)
+ .comment       0x00000033        0x0 C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+                                 0x34 (size before relaxing)
+ .comment       0x00000033        0x0 C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+                                 0x34 (size before relaxing)
+ .comment       0x00000033        0x0 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+                                 0x34 (size before relaxing)
+
+.note.GNU-stack
+                0x00000000        0x0
+ .note.GNU-stack
+                0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccxazI4D.o
+ .note.GNU-stack
+                0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\cc0uwopI.o
+ .note.GNU-stack
+                0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccoMjNdP.o
+ .note.GNU-stack
+                0x00000000        0x0 C:\Users\wuton\AppData\Local\Temp\ccG8uAFm.o
+
+.debug_line     0x00000000      0x153
+ .debug_line    0x00000000      0x153 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+
+.debug_line_str
+                0x00000000      0x18b
+ .debug_line_str
+                0x00000000      0x18b D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+
+.debug_info     0x00000000       0x5f
+ .debug_info    0x00000000       0x5f D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+
+.debug_abbrev   0x00000000       0x28
+ .debug_abbrev  0x00000000       0x28 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+
+.debug_aranges  0x00000000       0x20
+ .debug_aranges
+                0x00000000       0x20 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+
+.debug_str      0x00000000      0x1c6
+ .debug_str     0x00000000      0x1c6 D:/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/rv32i/ilp32\libgcc.a(div.o)
+                                0x1d0 (size before relaxing)
