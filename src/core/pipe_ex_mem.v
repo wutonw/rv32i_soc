@@ -1,6 +1,7 @@
 module pipe_ex_mem(
     input wire clk,
     input wire rst_n,
+    input wire ex_mem_flush,
 
     input wire [31:0] ex_alu_result,
     output reg [31:0] ex_mem_alu_result,
@@ -62,6 +63,8 @@ module pipe_ex_mem(
             ex_mem_is_load <= 1'b0;
             ex_mem_is_csr <= 1'b0;
             ex_mem_csr_we <= 0;
+        end else if (ex_mem_flush)begin
+            ex_mem_valid <= 0;
         end else begin
             ex_mem_alu_result <= ex_alu_result;
             ex_mem_wr_en <= id_ex_wr_en;

@@ -14,13 +14,13 @@ module cpu_core(
     wire stall;
     assign inst_addr = pc;
     assign prom_ce = !stall;
-    assign stall = csr_load_use_hazard;
+    assign stall = csr_load_use_hazard || store_load_use_hazard;
     // ==================================================
     // IF Stage
     reg [31:0] next_pc;
     wire id_ex_flush = branch_id_ex_flush || csr_load_use_hazard;
     wire if_id_flush = branch_if_id_flush;
-
+    wire ex_mem_flush = store_load_use_hazard;
     //flush and next_pc logic
     reg branch_if_id_flush;
     reg branch_id_ex_flush;
@@ -100,6 +100,7 @@ module cpu_core(
     wire [3:0] id_alu_op;
     wire id_use_rs1;
     wire id_use_rs2;
+    wire [4:0] ex_mem_rs2_addr;
     decoder u_decoder(
         .inst(if_id_inst),
         .wr_en(id_wr_en),
@@ -140,6 +141,7 @@ module cpu_core(
     wire [31:0] wb_wr_data;
     wire [4:0] wb_wr_addr;
     wire wb_wr_en;
+    wire [31:0] mem_rs2_data;
     regfile u_regfile(
         .clk(clk),
         .rst_n(rst_n),
@@ -149,7 +151,9 @@ module cpu_core(
         .rs1_addr(id_rs1_addr),
         .rs1_data(id_rs1_data),
         .rs2_addr(id_rs2_addr),
-        .rs2_data(id_rs2_data)
+        .rs2_data(id_rs2_data),
+        .mem_rs2_addr(ex_mem_rs2_addr),
+        .mem_rs2_data(mem_rs2_data)
     );
 
     reg [31:0] id_csr_w_data;
@@ -412,13 +416,13 @@ module cpu_core(
             default : op2 = (id_ex_alu_src_op2)? id_ex_imm : id_ex_rs2_data;
         endcase
     end
-
+    wire store_load_use_hazard = ex_mem_is_store && id_ex_is_load && id_ex_valid && ex_mem_valid &&
+                                    (ex_mem_alu_result[14:2] == ex_alu_result[14:2]) ;
     // ==================================================
 
     // ==================================================
     // EX/MEM Pipeline Register
     wire [31:0] ex_mem_alu_result;
-    wire [4:0] ex_mem_rs2_addr;
     wire ex_mem_valid;
     wire [31:0] ex_mem_pc;
     wire [31:0] ex_mem_inst;
@@ -439,6 +443,7 @@ module cpu_core(
     pipe_ex_mem u_pipe_ex_mem(
         .clk(clk),
         .rst_n(rst_n),
+        .ex_mem_flush(ex_mem_flush),
         .ex_alu_result(ex_alu_result),
         .ex_mem_alu_result(ex_mem_alu_result),
         .id_ex_valid(id_ex_valid),
@@ -497,7 +502,7 @@ module cpu_core(
         .ram_r_data(mem_raw_ram_r_data)
     );
     wire store_forward = ex_mem_valid && mem_wb_valid && ex_mem_is_store && (ex_mem_rs2_addr == mem_wb_rd_addr) && (mem_wb_rd_addr != 0) && wb_wr_en;
-    wire [31:0] mem_store_data = (store_forward)? wb_wr_data : ex_mem_rs2_data;
+    wire [31:0] mem_store_data = (store_forward)? wb_wr_data : mem_rs2_data;
     // ==================================================
 
     // ==================================================
