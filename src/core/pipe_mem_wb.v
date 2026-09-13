@@ -1,6 +1,7 @@
 module pipe_mem_wb(
     input wire clk,
     input wire rst_n,
+    input wire mem_wb_flush,
 
     input wire [31:0] ex_mem_pc,
     input wire [1:0] ex_mem_wb_sel,
@@ -29,6 +30,8 @@ module pipe_mem_wb(
             mem_wb_valid <= 1'b0;
             mem_wb_wb_sel <= 2'b0;
             mem_wb_is_load <= 1'b0;
+        end else if(mem_wb_flush)begin
+            mem_wb_valid <= 0;
         end else begin
             mem_wb_pc <= ex_mem_pc;
             mem_wb_wb_sel <= ex_mem_wb_sel;

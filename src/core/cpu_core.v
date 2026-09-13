@@ -18,19 +18,30 @@ module cpu_core(
     // ==================================================
     // IF Stage
     reg [31:0] next_pc;
-    wire id_ex_flush = branch_id_ex_flush || csr_load_use_hazard;
-    wire if_id_flush = branch_if_id_flush;
-    wire ex_mem_flush = store_load_use_hazard;
+    wire if_id_flush = branch_if_id_flush || trap_if_id_flush || trap_mert_if_id_flush;
+    wire id_ex_flush = branch_id_ex_flush || csr_load_use_hazard || trap_id_ex_flush || trap_mret_id_ex_flush;
+    wire ex_mem_flush = store_load_use_hazard || trap_ex_mem_flush;
+    wire mem_wb_flush = trap_mem_wb_flush;
     //flush and next_pc logic
     reg branch_if_id_flush;
     reg branch_id_ex_flush;
 
     wire [31:0] branch_target = id_ex_pc + id_ex_imm;
+    reg trap_mert_if_id_flush;
+    reg trap_mret_id_ex_flush;
     always @(*) begin
         next_pc = pc + 32'd4;
         branch_if_id_flush = 0;
         branch_id_ex_flush = 0;
-        if (id_ex_valid) begin
+        trap_mert_if_id_flush=0;
+        trap_mret_id_ex_flush=0;
+        if(id_trap_enter)begin
+            next_pc = id_trap_vector;
+        end else if (id_trap_exit && if_id_valid)begin
+            next_pc = id_mepc_out;
+            trap_mert_if_id_flush = 1;
+            trap_mret_id_ex_flush = 1;
+        end else if (id_ex_valid) begin
             if (id_ex_branch && branch_taken) begin
                 next_pc = branch_target;
                 branch_if_id_flush = 1;
@@ -55,33 +66,71 @@ module cpu_core(
         .pc(pc)
     );
 
-    // trap u_trap(
-    //     .id_illegal_inst(id_illegal_inst),
-    //     .id_decode_trap_enter(id_decode_trap_enter),
-    //     .mem_load_misaligned(mem_load_misaligned),
-    //     .mem_load_misaligned(mem_load_misaligned),
-    // );
-    //trap_cause
-    // always @(*)begin
-    //     trap_cause = 0;
-    //     if(illegal_inst)begin
-    //         trap_cause = 2;
-    //     end else if (load_misaligned)begin
-    //         trap_cause = 4;
-    //     end else if (store_misaligned)begin
-    //         trap_cause = 6;
-    //     end else if (decode_trap_enter)begin
-    //         if(inst[31:20] == 12'h000)begin
-    //             //ecall
-    //             trap_cause = 11;
-    //         end else if(inst[31:20] == 12'h001)begin
-    //             //ebreak
-    //             trap_cause = 3;
-    //         end
-    //     end else if (inst_address_misaligned)begin
-    //         trap_cause = 0;
-    //     end
-    // end
+    wire id_illegal_inst;
+    reg [31:0] trap_pc;
+    reg [31:0] trap_cause;
+    reg trap_if_id_flush;
+    reg trap_id_ex_flush;
+    reg trap_ex_mem_flush;
+    reg trap_mem_wb_flush;
+    wire id_trap_enter;
+    wire ex_redirect_valid =id_ex_valid && (id_ex_jump || id_ex_jump_reg || 
+                            (id_ex_branch && branch_taken));
+    wire [31:0] ex_redirect_target =id_ex_jump_reg ? {ex_alu_result[31:1], 1'b0} : branch_target;
+    wire inst_address_misaligned = ex_redirect_valid && (ex_redirect_target[1:0] != 2'b00);
+    assign id_trap_enter = ((id_decode_trap_enter || id_illegal_inst) && if_id_valid)
+                    ||((mem_load_misaligned || mem_store_misaligned)&& ex_mem_valid) || 
+                    (inst_address_misaligned && id_ex_valid);
+    always @(*)begin
+        trap_cause = 0;
+        trap_pc = 0;
+        trap_if_id_flush=0;
+        trap_id_ex_flush=0;
+        trap_ex_mem_flush=0;
+        trap_mem_wb_flush=0;
+        if (id_trap_enter)begin
+            if (mem_load_misaligned)begin
+                trap_cause = 4;
+                trap_pc = ex_mem_pc;
+                trap_if_id_flush=1;
+                trap_id_ex_flush=1;
+                trap_ex_mem_flush=1;
+                trap_mem_wb_flush=1;
+            end else if(mem_store_misaligned)begin
+                trap_cause = 6;
+                trap_pc = ex_mem_pc;
+                trap_if_id_flush=1;
+                trap_id_ex_flush=1;
+                trap_ex_mem_flush=1;
+                trap_mem_wb_flush=1;
+            end else if(inst_address_misaligned)begin
+                trap_cause = 0;
+                trap_pc = id_ex_pc;
+                trap_if_id_flush=1;
+                trap_id_ex_flush=1;
+                trap_ex_mem_flush=1;
+            end else if(id_illegal_inst)begin
+                trap_cause = 2;
+                trap_pc = if_id_pc;
+                trap_if_id_flush=1;
+                trap_id_ex_flush=1;
+            end else if (id_decode_trap_enter)begin
+                if(if_id_inst[31:20] == 12'h000)begin
+                    //ecall
+                    trap_cause = 11;
+                    trap_pc = if_id_pc;
+                    trap_if_id_flush=1;
+                    trap_id_ex_flush=1;
+                end else if(if_id_inst[31:20] == 12'h001)begin
+                    //ebreak
+                    trap_cause = 3;
+                    trap_pc = if_id_pc;
+                    trap_if_id_flush=1;
+                    trap_id_ex_flush=1;
+                end
+            end
+        end
+    end
     // ==================================================
 
     // ==================================================
@@ -105,7 +154,6 @@ module cpu_core(
     // ==================================================
     // ID Stage
     wire id_wr_en;
-    wire id_illegal_inst;
     wire [1:0] id_alu_src_op1;
     wire id_alu_src_op2;
     wire id_ext_u;
@@ -186,9 +234,6 @@ module cpu_core(
 
     reg [31:0] id_csr_w_data;
     wire [31:0] id_csr_r_data;
-    wire id_trap_enter;
-    wire [31:0] id_trap_pc;
-    wire [31:0] id_trap_cause;
     wire [31:0] id_trap_vector;
     wire [31:0] id_mepc_out;
     wire id_global_intr_en;
@@ -201,8 +246,8 @@ module cpu_core(
         .csr_we(csr_we),
         .csr_r_data(id_csr_r_data),
         .trap_enter(id_trap_enter),
-        .trap_pc(id_trap_pc),
-        .trap_cause(id_trap_cause),
+        .trap_pc(trap_pc),
+        .trap_cause(trap_cause),
         .trap_vector(id_trap_vector),
         .trap_exit(id_trap_exit),
         .mepc_out(id_mepc_out),
@@ -526,6 +571,7 @@ module cpu_core(
     pipe_mem_wb u_pipe_mem_wb(
         .clk(clk),
         .rst_n(rst_n),
+        .mem_wb_flush(mem_wb_flush),
         .ex_mem_pc(ex_mem_pc),
         .ex_mem_wb_sel(ex_mem_wb_sel),
         .ex_mem_alu_result(ex_mem_alu_result),
