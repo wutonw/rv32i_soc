@@ -1,7 +1,8 @@
 from pathlib import Path
 
 
-ROM_WORDS = 512
+# Gowin instruction pROM is configured as 8192 x 32-bit (32 KiB).
+ROM_WORDS = 8192
 NOP = 0x00000013
 
 

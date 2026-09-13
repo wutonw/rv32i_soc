@@ -4,7 +4,7 @@ ENTRY(_start)
 /* 当前 CPU 是分离的指令/数据通路：指令 ROM 和数据 RAM 各自从 0 开始。 */
 MEMORY
 {
-    ROM (rx)  : ORIGIN = 0x00000000, LENGTH = 2K
+    ROM (rx)  : ORIGIN = 0x00000000, LENGTH = 32K
     /* 普通静态数据：0x0000..0x6fff。 */
     RAM (rwx) : ORIGIN = 0x00000000, LENGTH = 0x7000
 }

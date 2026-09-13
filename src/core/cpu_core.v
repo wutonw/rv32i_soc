@@ -18,7 +18,7 @@ module cpu_core(
     // ==================================================
     // IF Stage
     reg [31:0] next_pc;
-    wire if_id_flush = branch_if_id_flush || trap_if_id_flush || trap_mert_if_id_flush;
+    wire if_id_flush = branch_if_id_flush || trap_if_id_flush || trap_mret_if_id_flush;
     wire id_ex_flush = branch_id_ex_flush || csr_load_use_hazard || trap_id_ex_flush || trap_mret_id_ex_flush;
     wire ex_mem_flush = store_load_use_hazard || trap_ex_mem_flush;
     wire mem_wb_flush = trap_mem_wb_flush;
@@ -27,21 +27,40 @@ module cpu_core(
     reg branch_id_ex_flush;
 
     wire [31:0] branch_target = id_ex_pc + id_ex_imm;
-    reg trap_mert_if_id_flush;
+    reg trap_mret_if_id_flush;
     reg trap_mret_id_ex_flush;
+    wire id_illegal_inst;
+    reg [31:0] trap_pc;
+    reg [31:0] trap_cause;
+    reg trap_if_id_flush;
+    reg trap_id_ex_flush;
+    reg trap_ex_mem_flush;
+    reg trap_mem_wb_flush;
+    wire id_trap_enter;
+    wire ex_redirect_valid = id_ex_valid && (id_ex_jump || id_ex_jump_reg ||
+                            (id_ex_branch && branch_taken));
+    wire [31:0] ex_redirect_target =id_ex_jump_reg ? {ex_alu_result[31:1], 1'b0} : branch_target;
+    wire inst_address_misaligned = ex_redirect_valid && (ex_redirect_target[1:0] != 2'b00);
+    wire mem_trap_valid = ex_mem_valid && (mem_load_misaligned || mem_store_misaligned);
+    wire ex_trap_valid = inst_address_misaligned;
+    wire id_trap_valid = if_id_valid && (id_decode_trap_enter || id_illegal_inst);
+
+    assign id_trap_enter = mem_trap_valid || ex_trap_valid ||
+                        (id_trap_valid && !ex_redirect_valid);
+    wire mret_fire = id_trap_exit && if_id_valid && !stall &&
+                    !mem_trap_valid && !ex_trap_valid && !ex_redirect_valid;
+    wire redirect_valid = id_trap_enter || ex_redirect_valid || mret_fire;
+
     always @(*) begin
         next_pc = pc + 32'd4;
         branch_if_id_flush = 0;
         branch_id_ex_flush = 0;
-        trap_mert_if_id_flush=0;
-        trap_mret_id_ex_flush=0;
-        if(id_trap_enter)begin
+        trap_mret_if_id_flush = 0;
+        trap_mret_id_ex_flush = 0;
+
+        if (id_trap_enter) begin
             next_pc = id_trap_vector;
-        end else if (id_trap_exit && if_id_valid)begin
-            next_pc = id_mepc_out;
-            trap_mert_if_id_flush = 1;
-            trap_mret_id_ex_flush = 1;
-        end else if (id_ex_valid) begin
+        end else if (ex_redirect_valid) begin
             if (id_ex_branch && branch_taken) begin
                 next_pc = branch_target;
                 branch_if_id_flush = 1;
@@ -55,32 +74,21 @@ module cpu_core(
                 branch_if_id_flush = 1;
                 branch_id_ex_flush = 1;
             end
+        end else if (mret_fire) begin
+            next_pc = id_mepc_out;
+            trap_mret_if_id_flush = 1;
+            trap_mret_id_ex_flush = 1;
         end
     end
-    
+
     pc_reg u_pc_reg(
         .clk(clk),
         .rst_n(rst_n),
-        .stall(stall),
+        .stall(stall && !redirect_valid),
         .next_pc(next_pc),
         .pc(pc)
     );
 
-    wire id_illegal_inst;
-    reg [31:0] trap_pc;
-    reg [31:0] trap_cause;
-    reg trap_if_id_flush;
-    reg trap_id_ex_flush;
-    reg trap_ex_mem_flush;
-    reg trap_mem_wb_flush;
-    wire id_trap_enter;
-    wire ex_redirect_valid =id_ex_valid && (id_ex_jump || id_ex_jump_reg || 
-                            (id_ex_branch && branch_taken));
-    wire [31:0] ex_redirect_target =id_ex_jump_reg ? {ex_alu_result[31:1], 1'b0} : branch_target;
-    wire inst_address_misaligned = ex_redirect_valid && (ex_redirect_target[1:0] != 2'b00);
-    assign id_trap_enter = ((id_decode_trap_enter || id_illegal_inst) && if_id_valid)
-                    ||((mem_load_misaligned || mem_store_misaligned)&& ex_mem_valid) || 
-                    (inst_address_misaligned && id_ex_valid);
     always @(*)begin
         trap_cause = 0;
         trap_pc = 0;
@@ -249,7 +257,7 @@ module cpu_core(
         .trap_pc(trap_pc),
         .trap_cause(trap_cause),
         .trap_vector(id_trap_vector),
-        .trap_exit(id_trap_exit),
+        .trap_exit(mret_fire),
         .mepc_out(id_mepc_out),
         .global_intr_en(id_global_intr_en)
     );
