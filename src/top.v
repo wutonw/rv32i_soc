@@ -1,3 +1,7 @@
+// FPGA 厂商选择：运行 switch_fpga.cmd，输入 1 选 Gowin、2 选 Xilinx
+`define FPGA_GOWIN
+//`define FPGA_XILINX
+
 module top(
     input wire raw_rst_n,
     input wire clk,
@@ -22,14 +26,26 @@ module top(
     // so discard the two always-zero byte-offset bits.
     assign prom_addr = inst_addr[14:2];
 
-    Gowin_pROM u_instruction_rom(
-        .dout  (inst),
-        .clk   (clk),
-        .oce   (1'b1),
-        .ce    (prom_ce),
-        .reset (~rst_n),
-        .ad    (prom_addr)
-    );
+    `ifdef FPGA_GOWIN
+        Gowin_pROM u_instruction_rom(
+            .dout  (inst),
+            .clk   (clk),
+            .oce   (1'b1),
+            .ce    (prom_ce),
+            .reset (~rst_n),
+            .ad    (prom_addr)
+        );
+    `elsif FPGA_XILINX
+        xilinx_inst_rom u_instruction_rom (
+            .clk  (clk),
+            .ce   (prom_ce),
+            .addr (prom_addr),
+            .inst (inst)
+        );
+    `else
+        `error "FPGA vendor not selected!"
+    `endif
+
     wire [31:0] pc;
     cpu_core u_cpu_core(
         .clk      (clk),

@@ -30,12 +30,14 @@ module cpu_core(
     reg trap_mret_if_id_flush;
     reg trap_mret_id_ex_flush;
     wire id_illegal_inst;
-    reg [31:0] trap_pc;
-    reg [31:0] trap_cause;
-    reg trap_if_id_flush;
-    reg trap_id_ex_flush;
-    reg trap_ex_mem_flush;
-    reg trap_mem_wb_flush;
+    wire [31:0] if_id_inst;
+    wire [31:0] if_id_pc;
+    wire id_decode_trap_enter;
+    wire [31:0] id_ex_pc;
+    wire [31:0] ex_mem_pc;
+    reg mem_store_misaligned;
+    reg mem_load_misaligned;
+    
     wire id_trap_enter;
     wire ex_redirect_valid = id_ex_valid && (id_ex_jump || id_ex_jump_reg ||
                             (id_ex_branch && branch_taken));
@@ -89,62 +91,34 @@ module cpu_core(
         .pc(pc)
     );
 
-    always @(*)begin
-        trap_cause = 0;
-        trap_pc = 0;
-        trap_if_id_flush=0;
-        trap_id_ex_flush=0;
-        trap_ex_mem_flush=0;
-        trap_mem_wb_flush=0;
-        if (id_trap_enter)begin
-            if (mem_load_misaligned)begin
-                trap_cause = 4;
-                trap_pc = ex_mem_pc;
-                trap_if_id_flush=1;
-                trap_id_ex_flush=1;
-                trap_ex_mem_flush=1;
-                trap_mem_wb_flush=1;
-            end else if(mem_store_misaligned)begin
-                trap_cause = 6;
-                trap_pc = ex_mem_pc;
-                trap_if_id_flush=1;
-                trap_id_ex_flush=1;
-                trap_ex_mem_flush=1;
-                trap_mem_wb_flush=1;
-            end else if(inst_address_misaligned)begin
-                trap_cause = 0;
-                trap_pc = id_ex_pc;
-                trap_if_id_flush=1;
-                trap_id_ex_flush=1;
-                trap_ex_mem_flush=1;
-            end else if(id_illegal_inst)begin
-                trap_cause = 2;
-                trap_pc = if_id_pc;
-                trap_if_id_flush=1;
-                trap_id_ex_flush=1;
-            end else if (id_decode_trap_enter)begin
-                if(if_id_inst[31:20] == 12'h000)begin
-                    //ecall
-                    trap_cause = 11;
-                    trap_pc = if_id_pc;
-                    trap_if_id_flush=1;
-                    trap_id_ex_flush=1;
-                end else if(if_id_inst[31:20] == 12'h001)begin
-                    //ebreak
-                    trap_cause = 3;
-                    trap_pc = if_id_pc;
-                    trap_if_id_flush=1;
-                    trap_id_ex_flush=1;
-                end
-            end
-        end
-    end
+    wire [31:0] trap_pc;
+    wire [31:0] trap_cause;
+    wire trap_if_id_flush;
+    wire trap_id_ex_flush;
+    wire trap_ex_mem_flush;
+    wire trap_mem_wb_flush;
+    trap u_trap(
+        .id_trap_enter(id_trap_enter),
+        .mem_load_misaligned(mem_load_misaligned),
+        .mem_store_misaligned(mem_store_misaligned),
+        .inst_address_misaligned(inst_address_misaligned),
+        .id_illegal_inst(id_illegal_inst),
+        .id_decode_trap_enter(id_decode_trap_enter),
+        .if_id_inst(if_id_inst),
+        .ex_mem_pc(ex_mem_pc),
+        .id_ex_pc(id_ex_pc),
+        .if_id_pc(if_id_pc),
+        .trap_cause(trap_cause),
+        .trap_pc(trap_pc),
+        .trap_if_id_flush(trap_if_id_flush),
+        .trap_id_ex_flush(trap_id_ex_flush),
+        .trap_ex_mem_flush(trap_ex_mem_flush),
+        .trap_mem_wb_flush(trap_mem_wb_flush)
+    );
     // ==================================================
 
     // ==================================================
     // IF/ID Pipeline Register
-    wire [31:0] if_id_inst;
-    wire [31:0] if_id_pc;
     wire if_id_valid;
     pipe_if_id u_pipe_if_id(
         .clk(clk),
@@ -173,7 +147,6 @@ module cpu_core(
     wire id_jump_reg;
     wire id_is_load;
     wire id_is_store;
-    wire id_decode_trap_enter;
     wire id_trap_exit;
     wire id_is_csr;
     wire id_csr_we;
@@ -320,7 +293,6 @@ module cpu_core(
     // ==================================================
     // ID/EX Pipeline Register
     wire id_ex_valid;
-    wire [31:0] id_ex_pc;
     wire [31:0] id_ex_inst;
     wire [4:0] id_ex_rs1_addr;
     wire [4:0] id_ex_rs2_addr;
@@ -484,7 +456,6 @@ module cpu_core(
     // EX/MEM Pipeline Register
     wire [31:0] ex_mem_alu_result;
     wire ex_mem_valid;
-    wire [31:0] ex_mem_pc;
     wire [31:0] ex_mem_inst;
     wire [4:0] ex_mem_rd_addr;
     wire [31:0] ex_mem_rs2_data;
@@ -547,11 +518,9 @@ module cpu_core(
 
     // ==================================================
     // MEM Stage
-    reg mem_store_misaligned;
     reg [31:0] mem_ram_w_data;
     wire [3:0] mem_ram_s_we = ex_mem_valid ? tmp_ram_s_we : 4'b0000;
     wire [31:0] mem_raw_ram_r_data;
-    reg mem_load_misaligned;
     reg [31:0] mem_ram_r_data;
     ram u_ram(
         .clk(clk),

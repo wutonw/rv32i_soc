@@ -18,3 +18,15 @@ sim
 
 # Windows
 Thumbs.db
+
+# Xilinx Vivado generated files
+/proj_xilinx/**/.Xil/
+/proj_xilinx/**/*.cache/
+/proj_xilinx/**/*.gen/
+/proj_xilinx/**/*.hw/
+/proj_xilinx/**/*.ip_user_files/
+/proj_xilinx/**/*.runs/
+/proj_xilinx/**/*.sim/
+/proj_xilinx/**/*.jou
+/proj_xilinx/**/*.log
+/proj_xilinx/**/*.str

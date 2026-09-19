@@ -7,7 +7,7 @@
 
 -mod_name Gowin_pROM
 -file_name gowin_prom
--path D:/aaa1verilog_project/rv32i_cpu/src/periph/gowin_prom/
+-path D:/aaa1verilog_project/rv32i_soc/src/periph/gowin_prom/
 -type RAM_ROM
 -file_type vlg
 -pROM true

@@ -112,3 +112,17 @@ powershell -ExecutionPolicy Bypass -File benchmark/embench/run_all.ps1 `
 使用 Gowin IDE 打开 `rv32i_cpu.gprj`，顶层模块为 `top`，引脚约束文件为
 `src/rv32i_cpu.cst`。工程中的 Gowin pROM 需要先把 `firmware/build/firmware.hex`
 导入 IP，再进行综合、布局布线和上板验证。
+
+## FPGA 厂商切换
+
+`src/top.v` 同时支持 Gowin pROM 和 Xilinx Block Memory Generator。切换前在仓库
+根目录双击 `switch_fpga.cmd`，然后直接按数字选择：
+
+```text
+1 = Gowin（高云）
+2 = Xilinx（赛灵思）
+3 = 退出
+```
+
+也可以从命令行直接运行 `switch_fpga.cmd 1` 或 `switch_fpga.cmd 2`。脚本只切换
+`FPGA_GOWIN` / `FPGA_XILINX` 宏，不会修改 IP 或工程文件。
