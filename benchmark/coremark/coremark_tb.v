@@ -79,6 +79,7 @@ module coremark_tb;
                 $display("PROGRESS: %0d / %0d cycles (%0.1f%%), pc=%08x",
                          cycle_count, max_cycles,
                          cycle_count * 100.0 / max_cycles, pc);
+                $fflush();
                 next_progress = next_progress + progress_cycles;
             end
 

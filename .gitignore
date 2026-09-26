@@ -15,6 +15,7 @@ sim
 
 # VSCode
 .vscode/
+/.venv/
 
 # Windows
 Thumbs.db

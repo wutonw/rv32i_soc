@@ -29,6 +29,7 @@ try {
     src\core\pipe_ex_mem.v `
     src\core\pipe_mem_wb.v `
     src\core\regfile.v `
+    src\core\trap.v `
     src\core\cpu_core.v `
     src\periph\ram.v `
     benchmark\coremark\coremark_tb.v
