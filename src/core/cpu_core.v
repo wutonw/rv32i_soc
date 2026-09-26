@@ -14,12 +14,14 @@ module cpu_core(
     wire stall;
     assign inst_addr = pc;
     assign prom_ce = !stall;
-    assign stall = csr_load_use_hazard || store_load_use_hazard;
+    assign stall = csr_ex_load_use_hazard || store_load_use_hazard || load_use_hazard ;
     // ==================================================
     // IF Stage
+    wire load_use_bubble =!store_load_use_hazard && (load_use_hazard || csr_ex_load_use_hazard);
     reg [31:0] next_pc;
     wire if_id_flush = branch_if_id_flush || trap_if_id_flush || trap_mret_if_id_flush;
-    wire id_ex_flush = branch_id_ex_flush || csr_load_use_hazard || trap_id_ex_flush || trap_mret_id_ex_flush;
+    wire id_ex_flush = branch_id_ex_flush || load_use_bubble || trap_id_ex_flush || 
+                        trap_mret_id_ex_flush ;
     wire ex_mem_flush = store_load_use_hazard || trap_ex_mem_flush;
     wire mem_wb_flush = trap_mem_wb_flush;
     //flush and next_pc logic
@@ -250,9 +252,12 @@ module cpu_core(
         endcase
     end
     //csr fwd rs1
-    wire csr_load_use_hazard = id_csr_use_rs1 && if_id_valid && id_ex_valid &&
-                                id_ex_is_load && (id_ex_rd_addr != 5'b0) &&
+    wire csr_ex_load_use_hazard = id_csr_use_rs1 && if_id_valid && (id_ex_valid &&
+                                id_ex_is_load) && (id_ex_rd_addr != 5'b0) &&
                                 (id_ex_rd_addr == id_rs1_addr);
+    // wire csr_mem_load_use_hazard = id_csr_use_rs1 && if_id_valid && !id_ex_valid &&
+    //                                 (ex_mem_valid && ex_mem_is_load) &&
+    //                                 (id_ex_rd_addr != 5'b0) && (ex_mem_rd_addr == id_rs1_addr);
     always @(*) begin
         //可以不加valid，会有csr_we兜底
         csr_rs1_data = id_rs1_data;
@@ -272,6 +277,7 @@ module cpu_core(
                     2'b01: csr_rs1_data = mem_ram_r_data;
                     2'b10: csr_rs1_data = ex_mem_pc + 32'd4;
                     2'b11: csr_rs1_data = ex_mem_csr_r_data;
+                    //default ;
                 endcase
             end
             if (!id_ex_is_load && id_ex_valid && id_ex_wr_en &&
@@ -418,8 +424,8 @@ module cpu_core(
     // rd_addr->use_rs1/2, rd_addr->add->use_rs1/2, lw->add->use_rs1/2, lw -> use_rs1/2
     // EX/MEM ALU  -> EX
     // MEM/WB      -> EX
-    // EX/MEM LOAD -> EX
-    wire ex_forward_valid = id_ex_valid && ex_mem_valid && (ex_mem_rd_addr != 5'b0) && ex_mem_wr_en;
+    // EX/MEM LOAD -> EX -XXX
+    wire ex_forward_valid = !ex_mem_is_load && id_ex_valid && ex_mem_valid && (ex_mem_rd_addr != 5'b0) && ex_mem_wr_en;
     wire ex_fwd_rs1 = ex_forward_valid && id_ex_use_rs1 && (ex_mem_rd_addr == id_ex_rs1_addr);
     wire ex_fwd_rs2 = !id_ex_is_store && ex_forward_valid && id_ex_use_rs2 && (ex_mem_rd_addr == id_ex_rs2_addr);
     wire wb_forward_valid = id_ex_valid && mem_wb_valid && (mem_wb_rd_addr != 5'b0) && mem_wb_wr_en;
@@ -427,37 +433,48 @@ module cpu_core(
     wire wb_fwd_rs2 = !id_ex_is_store && wb_forward_valid && id_ex_use_rs2 && (mem_wb_rd_addr == id_ex_rs2_addr);
     wire fwd_jump_or_reg = ex_mem_jump || ex_mem_jump_reg;
     always @(*)begin
-        case({ex_mem_is_load,ex_fwd_rs1,wb_fwd_rs1})
-            3'b101,3'b001 : op1 = wb_wr_data;
-            3'b011,3'b010 : op1 = (ex_mem_is_csr)? ex_mem_csr_r_data :
-                                    (fwd_jump_or_reg) ? ex_mem_pc + 32'd4 :
-                                    ex_mem_alu_result;
-            3'b111,3'b110 : op1 = mem_ram_r_data;
+        case({ex_fwd_rs1,wb_fwd_rs1})
+            2'b01 : op1 = wb_wr_data;
+            2'b11,2'b10 : op1 = (ex_mem_is_csr)? ex_mem_csr_r_data :
+                                (fwd_jump_or_reg) ? ex_mem_pc + 32'd4 :
+                                ex_mem_alu_result;
+            //3'b111,3'b110 : op1 = mem_ram_r_data;
             default : op1 = (id_ex_alu_src_op1 == 2'b00) ? id_ex_rs1_data :
                         (id_ex_alu_src_op1== 2'b01) ? 32'b0 :
                         id_ex_pc;
         endcase
     end
     always @(*)begin
-        case({ex_mem_is_load,ex_fwd_rs2,wb_fwd_rs2})
-            3'b101,3'b001 : op2 = wb_wr_data;
-            3'b011,3'b010 : op2 = (ex_mem_is_csr)? ex_mem_csr_r_data :
+        case({ex_fwd_rs2,wb_fwd_rs2})
+            2'b01 : op2 = wb_wr_data;
+            2'b11,2'b10 : op2 = (ex_mem_is_csr)? ex_mem_csr_r_data :
                                     (fwd_jump_or_reg) ? ex_mem_pc + 32'd4 :
                                     ex_mem_alu_result;
-            3'b111,3'b110 : op2 = mem_ram_r_data;
+            //3'b111,3'b110 : op2 = mem_ram_r_data;
             default : op2 = (id_ex_alu_src_op2)? id_ex_imm : id_ex_rs2_data;
         endcase
     end
+
+    wire [31:0] ex_addr_result = op1 + id_ex_imm;
+    wire [31:0] ex_result = (store_load_use_hazard && ex_mem_is_store && id_ex_is_load)? 32'b0 :
+                            id_ex_is_load ? ex_addr_result :
+                            ex_alu_result ;
+
     wire [31:0] addr_base = ex_fwd_rs1 ? ex_mem_alu_result :
                             wb_fwd_rs1 ? wb_wr_data :
                             id_ex_rs1_data;
     wire [31:0] ex_next_store_addr_result = addr_base + id_ex_imm;
+
     wire store_load_use_hazard = ex_mem_is_store && id_ex_is_load && id_ex_valid && ex_mem_valid &&
                                     (ex_mem_alu_result[14:2] == ex_next_store_addr_result[14:2]) ;
-    wire [31:0] ex_addr_result = op1 + id_ex_imm;
-    wire [31:0] ex_result = (ex_mem_is_store && id_ex_is_load)? 32'b0 :
-                            id_ex_is_load ? ex_addr_result :
-                            ex_alu_result ;
+    reg load_use_hazard;
+    always @(*)begin
+        load_use_hazard = 0;
+        if (!store_load_use_hazard && id_ex_is_load && id_ex_valid && if_id_valid && (id_ex_rd_addr != 5'b0))begin
+            if (id_use_rs1 && (id_ex_rd_addr == id_rs1_addr)) load_use_hazard = 1;
+            else if (id_use_rs2 && (id_ex_rd_addr == id_rs2_addr)) load_use_hazard = 1;
+        end
+    end
     // ==================================================
 
     // ==================================================
