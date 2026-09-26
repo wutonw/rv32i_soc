@@ -1,6 +1,6 @@
 // FPGA 厂商选择：运行 switch_fpga.cmd，输入 1 选 Gowin、2 选 Xilinx
-`define FPGA_GOWIN
-//`define FPGA_XILINX
+//`define FPGA_GOWIN
+`define FPGA_XILINX
 
 module top(
     input wire raw_rst_n,

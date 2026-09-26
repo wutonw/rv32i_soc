@@ -448,8 +448,16 @@ module cpu_core(
             default : op2 = (id_ex_alu_src_op2)? id_ex_imm : id_ex_rs2_data;
         endcase
     end
+    wire [31:0] addr_base = ex_fwd_rs1 ? ex_mem_alu_result :
+                            wb_fwd_rs1 ? wb_wr_data :
+                            id_ex_rs1_data;
+    wire [31:0] ex_next_store_addr_result = addr_base + id_ex_imm;
     wire store_load_use_hazard = ex_mem_is_store && id_ex_is_load && id_ex_valid && ex_mem_valid &&
-                                    (ex_mem_alu_result[14:2] == ex_alu_result[14:2]) ;
+                                    (ex_mem_alu_result[14:2] == ex_next_store_addr_result[14:2]) ;
+    wire [31:0] ex_addr_result = op1 + id_ex_imm;
+    wire [31:0] ex_result = (ex_mem_is_store && id_ex_is_load)? 32'b0 :
+                            id_ex_is_load ? ex_addr_result :
+                            ex_alu_result ;
     // ==================================================
 
     // ==================================================
@@ -475,7 +483,7 @@ module cpu_core(
         .clk(clk),
         .rst_n(rst_n),
         .ex_mem_flush(ex_mem_flush),
-        .ex_alu_result(ex_alu_result),
+        .ex_alu_result(ex_result),
         .ex_mem_alu_result(ex_mem_alu_result),
         .id_ex_valid(id_ex_valid),
         .id_ex_pc(id_ex_pc),
@@ -525,7 +533,7 @@ module cpu_core(
     ram u_ram(
         .clk(clk),
         .we(mem_ram_s_we),
-        .rd_addr(ex_alu_result),//提前吃地址
+        .rd_addr(ex_result),//提前吃地址
         .wr_addr(ex_mem_alu_result),
         .ram_w_data(mem_ram_w_data),
         .ram_r_data(mem_raw_ram_r_data)
