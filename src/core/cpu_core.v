@@ -216,18 +216,24 @@ module cpu_core(
     );
 
     reg [31:0] id_csr_w_data;
-    wire [31:0] id_csr_r_data;
+    reg [31:0] id_csr_r_data;
+    wire [31:0] csr_r_data_file;
     wire [31:0] id_trap_vector;
     wire [31:0] id_mepc_out;
     wire id_global_intr_en;
-    wire csr_we = id_csr_we && if_id_valid && !stall && !if_id_flush;
+    wire mem_wb_is_csr;
+    wire mem_wb_csr_we;
+    wire [11:0] mem_wb_csr_addr;
+    wire [31:0] mem_wb_csr_w_data;
+    wire csr_we = mem_wb_valid && mem_wb_is_csr && mem_wb_csr_we;
     csr_file u_csr_file(
         .clk(clk),
         .rst_n(rst_n),
-        .csr_addr(id_csr_addr),//选择
-        .csr_w_data(id_csr_w_data),
+        .csr_addr(id_csr_addr),
+        .csr_w_addr(mem_wb_csr_addr),
+        .csr_w_data(mem_wb_csr_w_data),
         .csr_we(csr_we),
-        .csr_r_data(id_csr_r_data),
+        .csr_r_data(csr_r_data_file),
         .trap_enter(id_trap_enter),
         .trap_pc(trap_pc),
         .trap_cause(trap_cause),
@@ -236,6 +242,21 @@ module cpu_core(
         .mepc_out(id_mepc_out),
         .global_intr_en(id_global_intr_en)
     );
+    always @(*) begin
+        id_csr_r_data = csr_r_data_file;
+        if (mem_wb_valid && mem_wb_is_csr && mem_wb_csr_we &&
+            (mem_wb_csr_addr == id_csr_addr)) begin
+            id_csr_r_data = mem_wb_csr_w_data;
+        end
+        if (ex_mem_valid && ex_mem_is_csr && ex_mem_csr_we &&
+            (ex_mem_csr_addr == id_csr_addr)) begin
+            id_csr_r_data = ex_mem_csr_w_data;
+        end
+        if (id_ex_valid && id_ex_is_csr && id_ex_csr_we &&
+            (id_ex_csr_addr == id_csr_addr)) begin
+            id_csr_r_data = id_ex_csr_w_data;
+        end
+    end
     //csr
     wire [31:0] id_zimm_32 = {27'b0 , if_id_inst[19:15]};
     reg [31:0] csr_rs1_data;
@@ -321,6 +342,8 @@ module cpu_core(
     wire id_ex_trap_exit;
     wire id_ex_is_csr;
     wire id_ex_csr_we;
+    wire [11:0] id_ex_csr_addr;
+    wire [31:0] id_ex_csr_w_data;
     wire [3:0] id_ex_alu_op;
     wire id_ex_is_load;
     wire id_ex_is_store;
@@ -367,6 +390,8 @@ module cpu_core(
         .id_trap_exit(id_trap_exit),
         .id_is_csr(id_is_csr),
         .id_csr_we(id_csr_we),
+        .id_csr_addr(id_csr_addr),
+        .id_csr_w_data(id_csr_w_data),
         .id_ex_wr_en(id_ex_wr_en),
         .id_ex_illegal_inst(id_ex_illegal_inst),
         .id_ex_alu_src_op1(id_ex_alu_src_op1),
@@ -384,6 +409,8 @@ module cpu_core(
         .id_ex_trap_exit(id_ex_trap_exit),
         .id_ex_is_csr(id_ex_is_csr),
         .id_ex_csr_we(id_ex_csr_we),
+        .id_ex_csr_addr(id_ex_csr_addr),
+        .id_ex_csr_w_data(id_ex_csr_w_data),
         .id_alu_op(id_alu_op),
         .id_ex_alu_op(id_ex_alu_op),
         .id_use_rs1(id_use_rs1),
@@ -494,6 +521,8 @@ module cpu_core(
     wire [31:0] ex_mem_csr_r_data;
     wire ex_mem_csr_we;
     wire ex_mem_is_csr;
+    wire [11:0] ex_mem_csr_addr;
+    wire [31:0] ex_mem_csr_w_data;
     wire ex_mem_jump;
     wire ex_mem_jump_reg;
     pipe_ex_mem u_pipe_ex_mem(
@@ -532,6 +561,10 @@ module cpu_core(
         .ex_mem_csr_r_data(ex_mem_csr_r_data),
         .id_ex_is_csr(id_ex_is_csr),
         .ex_mem_is_csr(ex_mem_is_csr),
+        .id_ex_csr_addr(id_ex_csr_addr),
+        .ex_mem_csr_addr(ex_mem_csr_addr),
+        .id_ex_csr_w_data(id_ex_csr_w_data),
+        .ex_mem_csr_w_data(ex_mem_csr_w_data),
         .id_ex_csr_we(id_ex_csr_we),
         .ex_mem_csr_we(ex_mem_csr_we),
         .id_ex_jump(id_ex_jump),
@@ -591,7 +624,15 @@ module cpu_core(
         .ex_mem_valid(ex_mem_valid),
         .mem_wb_valid(mem_wb_valid),
         .ex_mem_csr_r_data(ex_mem_csr_r_data),
-        .mem_wb_csr_r_data(mem_wb_csr_r_data)
+        .mem_wb_csr_r_data(mem_wb_csr_r_data),
+        .ex_mem_is_csr(ex_mem_is_csr),
+        .mem_wb_is_csr(mem_wb_is_csr),
+        .ex_mem_csr_we(ex_mem_csr_we),
+        .mem_wb_csr_we(mem_wb_csr_we),
+        .ex_mem_csr_addr(ex_mem_csr_addr),
+        .mem_wb_csr_addr(mem_wb_csr_addr),
+        .ex_mem_csr_w_data(ex_mem_csr_w_data),
+        .mem_wb_csr_w_data(mem_wb_csr_w_data)
     );
     // ==================================================
 

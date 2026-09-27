@@ -44,6 +44,10 @@ module pipe_ex_mem(
 
     input wire id_ex_is_csr,
     output reg ex_mem_is_csr,
+    input wire [11:0] id_ex_csr_addr,
+    output reg [11:0] ex_mem_csr_addr,
+    input wire [31:0] id_ex_csr_w_data,
+    output reg [31:0] ex_mem_csr_w_data,
 
     input wire id_ex_jump,
     input wire id_ex_jump_reg,
@@ -78,6 +82,8 @@ module pipe_ex_mem(
         ex_mem_csr_r_data <= id_ex_csr_r_data;
         ex_mem_is_csr <= id_ex_is_csr;
         ex_mem_csr_we <= id_ex_csr_we;
+        ex_mem_csr_addr <= id_ex_csr_addr;
+        ex_mem_csr_w_data <= id_ex_csr_w_data;
         ex_mem_jump_reg <= id_ex_jump_reg;
         ex_mem_jump <= id_ex_jump;
     end

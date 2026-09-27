@@ -11,7 +11,9 @@ CoreMark at Fmax. You can pass `--period-ns` and `--wns-ns` to avoid prompts.
 
 The stress gate includes 128 unrolled dependency cases with 640 checked RAM
 results, four resets during execution, branch/JAL wrong-path guards, existing
-forwarding and memory tests, and firmware checks for 12 traps and 12 returns.
+forwarding and memory tests, CSR WB-commit/forwarding checks, a misaligned-load
+trap with a younger CSR write that must be flushed, and firmware checks for 12
+traps and 12 returns.
 Any failed check stops the launcher before CoreMark.
 
 Required tools on `PATH`: Icarus Verilog (`iverilog`, `vvp`), RISC-V GCC and

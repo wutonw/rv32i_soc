@@ -17,6 +17,7 @@ RTL = [
 ]
 TESTS = [
     ("pipeline_long_stress_tb", "PASS: 640 signatures, wrong-path guards, 4 mid-run resets"),
+    ("csr_commit_trap_stress_tb", "PASS: CSR WB commit, forwarding, and trap ordering checks passed"),
     ("forwarding_tb", "PASS: all forwarding tests passed"),
     ("memory_hazard_tb", "PASS: memory/forwarding/hazard stress passed"),
     ("extreme_tb", "PASS: extreme RV32I/CSR stress passed"),
@@ -55,7 +56,7 @@ def main() -> int:
             print(f"[stress] {name}...", flush=True)
             binary = str(Path(temporary) / f"{name}.vvp")
             testbench = (Path(__file__).resolve().parent / f"{name}.v"
-                         if name == "pipeline_long_stress_tb"
+                         if name in {"pipeline_long_stress_tb", "csr_commit_trap_stress_tb"}
                          else ROOT / "tb" / f"{name}.v")
             run(["iverilog", "-g2012", "-I", str(ROOT / "src"),
                  "-s", name, "-o", binary, *sources,

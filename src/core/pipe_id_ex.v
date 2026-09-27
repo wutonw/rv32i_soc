@@ -41,6 +41,8 @@ module pipe_id_ex(
     input wire id_trap_exit,
     input wire id_is_csr,
     input wire id_csr_we,
+    input wire [11:0] id_csr_addr,
+    input wire [31:0] id_csr_w_data,
     output reg id_ex_wr_en,
     output reg id_ex_illegal_inst,
     output reg [1:0] id_ex_alu_src_op1,
@@ -58,6 +60,8 @@ module pipe_id_ex(
     output reg id_ex_trap_exit,
     output reg id_ex_is_csr,
     output reg id_ex_csr_we,
+    output reg [11:0] id_ex_csr_addr,
+    output reg [31:0] id_ex_csr_w_data,
 
     input wire [3:0] id_alu_op,
     output reg [3:0] id_ex_alu_op,
@@ -107,6 +111,8 @@ module pipe_id_ex(
             id_ex_trap_exit <= id_trap_exit;
             id_ex_is_csr <= id_is_csr;
             id_ex_csr_we <= id_csr_we;
+            id_ex_csr_addr <= id_csr_addr;
+            id_ex_csr_w_data <= id_csr_w_data;
             id_ex_alu_op <= id_alu_op;
             id_ex_use_rs1 <= id_use_rs1;
             id_ex_use_rs2 <= id_use_rs2;

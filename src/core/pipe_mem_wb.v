@@ -22,7 +22,15 @@ module pipe_mem_wb(
     output reg mem_wb_valid,
 
     input wire [31:0] ex_mem_csr_r_data,
-    output reg [31:0] mem_wb_csr_r_data
+    output reg [31:0] mem_wb_csr_r_data,
+    input wire ex_mem_is_csr,
+    output reg mem_wb_is_csr,
+    input wire ex_mem_csr_we,
+    output reg mem_wb_csr_we,
+    input wire [11:0] ex_mem_csr_addr,
+    output reg [11:0] mem_wb_csr_addr,
+    input wire [31:0] ex_mem_csr_w_data,
+    output reg [31:0] mem_wb_csr_w_data
 );
     always @(posedge clk or negedge rst_n)begin
         if(!rst_n)begin
@@ -43,6 +51,10 @@ module pipe_mem_wb(
         mem_wb_rd_addr <= ex_mem_rd_addr;
         mem_wb_is_load <= ex_mem_is_load;
         mem_wb_csr_r_data <= ex_mem_csr_r_data;
+        mem_wb_is_csr <= ex_mem_is_csr;
+        mem_wb_csr_we <= ex_mem_csr_we;
+        mem_wb_csr_addr <= ex_mem_csr_addr;
+        mem_wb_csr_w_data <= ex_mem_csr_w_data;
     end
 
 endmodule

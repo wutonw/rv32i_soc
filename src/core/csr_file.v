@@ -3,6 +3,7 @@ module csr_file(
     input wire rst_n,
 
     input wire [11:0] csr_addr,
+    input wire [11:0] csr_w_addr,
     input wire [31:0] csr_w_data,
     input wire csr_we,
     output reg [31:0] csr_r_data,
@@ -56,7 +57,7 @@ module csr_file(
                 mstatus[3] <= mstatus[7];
                 mstatus[7] <= 1'b1;
             end else if(csr_we) begin
-                case (csr_addr)
+                case (csr_w_addr)
                     12'h300: mstatus <= csr_w_data;
                     12'h304: mie <= csr_w_data;
                     12'h305: mtvec <= csr_w_data;
