@@ -14,14 +14,14 @@ module cpu_core(
     wire stall;
     assign inst_addr = pc;
     assign prom_ce = !stall;
-    assign stall = csr_ex_load_use_hazard || store_load_use_hazard || load_use_hazard ;
+    assign stall = csr_ex_load_use_hazard || store_load_use_hazard || load_use_hazard ||csr_mem_load_use_hazard;
     // ==================================================
     // IF Stage
     wire load_use_bubble =!store_load_use_hazard && (load_use_hazard || csr_ex_load_use_hazard);
     reg [31:0] next_pc;
     wire if_id_flush = branch_if_id_flush || trap_if_id_flush || trap_mret_if_id_flush;
     wire id_ex_flush = branch_id_ex_flush || load_use_bubble || trap_id_ex_flush || 
-                        trap_mret_id_ex_flush ;
+                        trap_mret_id_ex_flush ||csr_mem_load_use_hazard;
     wire ex_mem_flush = store_load_use_hazard || trap_ex_mem_flush;
     wire mem_wb_flush = trap_mem_wb_flush;
     //flush and next_pc logic
@@ -255,9 +255,9 @@ module cpu_core(
     wire csr_ex_load_use_hazard = id_csr_use_rs1 && if_id_valid && (id_ex_valid &&
                                 id_ex_is_load) && (id_ex_rd_addr != 5'b0) &&
                                 (id_ex_rd_addr == id_rs1_addr);
-    // wire csr_mem_load_use_hazard = id_csr_use_rs1 && if_id_valid && !id_ex_valid &&
-    //                                 (ex_mem_valid && ex_mem_is_load) &&
-    //                                 (id_ex_rd_addr != 5'b0) && (ex_mem_rd_addr == id_rs1_addr);
+    wire csr_mem_load_use_hazard = id_csr_use_rs1 && if_id_valid && !id_ex_valid &&
+                                    (ex_mem_valid && ex_mem_is_load) &&
+                                    (id_ex_rd_addr != 5'b0) && (ex_mem_rd_addr == id_rs1_addr);
     always @(*) begin
         //可以不加valid，会有csr_we兜底
         csr_rs1_data = id_rs1_data;
@@ -274,10 +274,10 @@ module cpu_core(
                 //MEM
                 case (ex_mem_wb_sel)
                     2'b00: csr_rs1_data = ex_mem_alu_result;
-                    2'b01: csr_rs1_data = mem_ram_r_data;
+                    //2'b01: csr_rs1_data = mem_ram_r_data;
                     2'b10: csr_rs1_data = ex_mem_pc + 32'd4;
                     2'b11: csr_rs1_data = ex_mem_csr_r_data;
-                    //default ;
+                    default ;
                 endcase
             end
             if (!id_ex_is_load && id_ex_valid && id_ex_wr_en &&
@@ -456,7 +456,7 @@ module cpu_core(
     end
 
     wire [31:0] ex_addr_result = op1 + id_ex_imm;
-    wire [31:0] ex_result = (store_load_use_hazard && ex_mem_is_store && id_ex_is_load)? 32'b0 :
+    wire [31:0] ex_result = store_load_use_hazard ? 32'b0 :
                             id_ex_is_load ? ex_addr_result :
                             ex_alu_result ;
 
