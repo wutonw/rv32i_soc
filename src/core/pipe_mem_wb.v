@@ -26,23 +26,23 @@ module pipe_mem_wb(
 );
     always @(posedge clk or negedge rst_n)begin
         if(!rst_n)begin
-            mem_wb_wr_en <= 1'b0;
             mem_wb_valid <= 1'b0;
-            mem_wb_wb_sel <= 2'b0;
-            mem_wb_is_load <= 1'b0;
         end else if(mem_wb_flush)begin
             mem_wb_valid <= 0;
         end else begin
-            mem_wb_pc <= ex_mem_pc;
-            mem_wb_wb_sel <= ex_mem_wb_sel;
-            mem_wb_alu_result <= ex_mem_alu_result;
-            mem_wb_ram_r_data <= mem_ram_r_data;
-            mem_wb_wr_en <= ex_mem_wr_en;
-            mem_wb_rd_addr <= ex_mem_rd_addr;
             mem_wb_valid <= ex_mem_valid;
-            mem_wb_is_load <= ex_mem_is_load;
-            mem_wb_csr_r_data <= ex_mem_csr_r_data;
         end
+    end
+
+    always @(posedge clk) begin
+        mem_wb_pc <= ex_mem_pc;
+        mem_wb_wb_sel <= ex_mem_wb_sel;
+        mem_wb_alu_result <= ex_mem_alu_result;
+        mem_wb_ram_r_data <= mem_ram_r_data;
+        mem_wb_wr_en <= ex_mem_wr_en;
+        mem_wb_rd_addr <= ex_mem_rd_addr;
+        mem_wb_is_load <= ex_mem_is_load;
+        mem_wb_csr_r_data <= ex_mem_csr_r_data;
     end
 
 endmodule

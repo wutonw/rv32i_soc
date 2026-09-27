@@ -17,7 +17,6 @@ module pipe_if_id(
             pc1<= 32'b0;
             if_id_pc <= 32'b0;
             if_id_valid <= 0;
-            if_id_inst <= 32'b0;
             valid <= 1'b0;
         end else if (if_id_flush)begin
             valid <= 1'b0;
@@ -27,9 +26,11 @@ module pipe_if_id(
             if_id_pc <= pc1;
             valid <= 1'b1;
             if_id_valid <= valid;
-
-            if_id_inst <= inst;
         end
+    end
+
+    always @(posedge clk) begin
+        if (!stall) if_id_inst <= inst;
     end
 
 endmodule

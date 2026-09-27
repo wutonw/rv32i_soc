@@ -35,7 +35,6 @@ module regfile(
 
     assign rs1_data = (wr_en && wr_addr != 0 && wr_addr == rs1_addr) ? wr_data :
                         rf[rs1_addr];
-
     assign rs2_data = (wr_en && wr_addr != 0 && wr_addr == rs2_addr) ? wr_data :
                         rf[rs2_addr];
     assign mem_rs2_data = (wr_en && wr_addr != 0 && wr_addr == mem_rs2_addr) ? wr_data :

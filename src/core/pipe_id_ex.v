@@ -73,30 +73,15 @@ module pipe_id_ex(
     always @(posedge clk or negedge rst_n)begin
         if(!rst_n)begin
             id_ex_valid <= 1'b0;
-            id_ex_wr_en <= 1'b0;
-            id_ex_illegal_inst <= 1'b0;
-            id_ex_alu_src_op1 <= 2'b0;
-            id_ex_alu_src_op2 <= 1'b0;
-            id_ex_ext_u <= 1'b0;
-            id_ex_ram_size <= 2'b0;
-            id_ex_ram_we <= 1'b0;
-            id_ex_wb_sel <= 2'b0;
-            id_ex_branch <= 1'b0;
-            id_ex_jump <= 1'b0;
-            id_ex_jump_reg <= 1'b0;
-            id_ex_is_load <= 1'b0;
-            id_ex_is_store <= 1'b0;
-            id_ex_is_csr <= 1'b0;
-            id_ex_csr_we <= 1'b0;
-            id_ex_decode_trap_enter <= 1'b0;
-            id_ex_trap_exit <= 1'b0;
-            id_ex_alu_op <= 4'b0;
-            id_ex_use_rs1 <= 0;
-            id_ex_use_rs2 <= 0;
         end else if (id_ex_flush)begin
             id_ex_valid <= 1'b0;
         end else if(!stall) begin
             id_ex_valid <= if_id_valid;
+        end
+    end
+
+    always @(posedge clk) begin
+        if (!stall) begin
             id_ex_pc <= if_id_pc;
             id_ex_inst <= if_id_inst;
             id_ex_rs1_addr <= id_rs1_addr;

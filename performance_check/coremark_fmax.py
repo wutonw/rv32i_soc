@@ -10,9 +10,9 @@ CoreMark is the estimated score at the calculated Fmax.
 
 Examples (from the repository root)::
 
-    .\run_coremark_fmax.cmd
-    .\run_coremark_fmax.cmd --period-ns 10 --wns-ns 0.42
-    .\run_coremark_fmax.cmd --period-ns 8 --wns-ns -0.35
+    .\performance_check\run_coremark_fmax.cmd
+    .\performance_check\run_coremark_fmax.cmd --period-ns 10 --wns-ns 0.42
+    .\performance_check\run_coremark_fmax.cmd --period-ns 8 --wns-ns -0.35
 
 The script prints the three values needed for an optimization spreadsheet:
 Fmax, CoreMark/MHz and CoreMark at Fmax.
@@ -190,12 +190,12 @@ def main() -> int:
     if sys.prefix == sys.base_prefix:
         raise RuntimeError(
             "请使用项目虚拟环境运行："
-            " .\\run_coremark_fmax.cmd"
+            " .\\performance_check\\run_coremark_fmax.cmd"
         )
     args = build_parser().parse_args()
     if args.max_cycles < 1:
         raise ValueError("max-cycles must be positive")
-    repo_root = Path(__file__).resolve().parent
+    repo_root = Path(__file__).resolve().parent.parent
     print("正在运行 CoreMark（10 次迭代），请稍候...", flush=True)
     output = run_coremark(repo_root, args.max_cycles)
     iterations, timed_cycles, coremark_per_mhz = parse_coremark_output(output)

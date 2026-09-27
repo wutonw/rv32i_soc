@@ -257,7 +257,7 @@ module cpu_core(
                                 (id_ex_rd_addr == id_rs1_addr);
     wire csr_mem_load_use_hazard = id_csr_use_rs1 && if_id_valid && !id_ex_valid &&
                                     (ex_mem_valid && ex_mem_is_load) &&
-                                    (id_ex_rd_addr != 5'b0) && (ex_mem_rd_addr == id_rs1_addr);
+                                    (ex_mem_rd_addr != 5'b0) && (ex_mem_rd_addr == id_rs1_addr);
     always @(*) begin
         //可以不加valid，会有csr_we兜底
         csr_rs1_data = id_rs1_data;
