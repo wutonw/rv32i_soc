@@ -14,8 +14,6 @@ module top(
     wire [12:0] prom_addr;
     wire prom_ce;
 
-    // Mechanical reset input is active-low; debounce produces a stable
-    // active-low reset for the CPU.
     debounce u_debounce(
         .clk    (clk),
         .key_in (raw_rst_n),

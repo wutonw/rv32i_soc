@@ -24,8 +24,7 @@ proj_gowwin/          保留的 Gowin 工程，不是当前主工程
 firmware/             裸机 C、启动/Trap 代码及板测汇编和 HEX
 tb/                   定向 testbench
 performance_check/    流水线压力测试与 CoreMark/Fmax 检查入口
-benchmark/            CoreMark、Dhrystone、Embench-IoT 移植和仿真
-参考文件/             历史基线与性能记录
+benchmark/coremark/   CoreMark 裸机移植和 RTL 仿真
 ```
 
 ## Vivado 上板
@@ -73,25 +72,24 @@ Trap testbench 包含 12 次异常及 `mret` 返回检查。更大范围的流�
 顺序压力测试和 CoreMark/Fmax 入口见 `performance_check/README.md`。
 `tb/top_prom_tb.ps1` 针对旧 Gowin pROM 仿真模型，不是当前 Vivado 板测入口。
 
-## 历史性能基线
+## 性能测试
 
-`参考文件/性能记录.xlsx` 保存了不同实现版本的 RTL 仿真性能和 Vivado Fmax；
-下表是**历史记录**，不是当前工程重新跑过的报告，也不是 50 MHz 板测实测分数。
+以下为已记录的历史版本结果。CoreMark/MHz 来自 RTL 仿真，Fmax 来自 Vivado
+实现后的时序报告；它们不是当前 50 MHz 板测程序的实测成绩。
 
-| 版本 | CoreMark/MHz | 实现 Fmax | 备注 |
-| --- | ---: | ---: | --- |
-| v1 | 0.854813 | 80.978 MHz | 初始流水线及 Trap/CSR |
-| v2 | 0.839941 | 92.954 MHz | 增加 RAM 读数据旁路 |
-| v2.1 | 0.839941 | 99.295 MHz | 调整 CSR/load hazard 与复位启动 |
-| v2.2 | 0.839941 | 101.657 MHz | CSR 写入移至 WB |
+| 版本 | CoreMark/s @ Fmax | CoreMark/MHz | Fmax | LUT | FF | BRAM | 主要变化 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| v1 | 69.221 | 0.854813 | 80.978 MHz | 5% | 2% | 11% | 初始流水线及 Trap/CSR |
+| v2 | 78.076 | 0.839941 | 92.954 MHz | 5% | 2% | 11% | 增加 RAM 读数据旁路 |
+| v2.1 | 83.402 | 0.839941 | 99.295 MHz | 5% | 2% | 11% | 调整 CSR/load hazard 与复位启动 |
+| v2.2 | 85.386 | 0.839941 | 101.657 MHz | 5% | 2% | 11% | CSR 写入移至 WB |
 
-另一次 10 次迭代的 CoreMark RTL 仿真记录为 `11,698,464` timed cycles、
-约 `1.622` CPI、`0.854813 CoreMark/MHz`；它属于早期基线，和表中 v2.2 的
-`0.839941 CoreMark/MHz` 不是同一版本。Dhrystone 历史基线为
-`0.757856 DMIPS/MHz`。Embench-IoT 的 18/19 项 smoke 测试可装入当前
-32 KiB 数据 RAM，`xgboost` 需要更大仿真 RAM；相关估算不属于正式成绩。
-详细条件及复现方法见 `参考文件/RV32I软核基线记录_2026-09-12.md` 和
-`benchmark/` 下各测试说明。
+另一次早期 CoreMark 10 次迭代 RTL 仿真：`11,698,464` timed cycles、约
+`1.621732` CPI、`0.854813 CoreMark/MHz`。它和表中 v2.2 的
+`0.839941 CoreMark/MHz` 属于不同版本。
+
+`benchmark/coremark/` 提供 CoreMark 的构建、RTL 仿真脚本与运行条件；
+`performance_check/` 提供压力测试及 CoreMark/Fmax 检查入口。
 
 ## 下一步
 
