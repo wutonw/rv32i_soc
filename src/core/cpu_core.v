@@ -160,6 +160,8 @@ module cpu_core(
     wire id_use_rs1;
     wire id_use_rs2;
     wire [4:0] ex_mem_rs2_addr;
+    wire id_is_m_ext;
+    wire [2:0] id_m_op;
     decoder u_decoder(
         .inst(if_id_inst),
         .wr_en(id_wr_en),
@@ -185,7 +187,9 @@ module cpu_core(
         .csr_addr(id_csr_addr),
         .alu_op(id_alu_op),
         .use_rs1(id_use_rs1),
-        .use_rs2(id_use_rs2)
+        .use_rs2(id_use_rs2),
+        .is_m_ext(id_is_m_ext),
+        .m_op(id_m_op)
     );
 
     wire [31:0] id_imm;
@@ -306,7 +310,7 @@ module cpu_core(
                 id_ex_rd_addr == id_rs1_addr)begin
                 //EX
                 case (id_ex_wb_sel)
-                    2'b00: csr_rs1_data = ex_alu_result;
+                    2'b00: csr_rs1_data = ex_result;
                     2'b10: csr_rs1_data = id_ex_pc + 32'd4;
                     2'b11: csr_rs1_data = id_ex_csr_r_data;
                     default: csr_rs1_data = id_ex_rs1_data;
@@ -350,6 +354,8 @@ module cpu_core(
     wire id_ex_use_rs1;
     wire id_ex_use_rs2;
     wire [31:0] id_ex_csr_r_data;
+    wire id_ex_is_m_ext;
+    wire [2:0] id_ex_m_op;
     pipe_id_ex u_pipe_id_ex(
         .clk(clk),
         .rst_n(rst_n),
@@ -418,7 +424,11 @@ module cpu_core(
         .id_ex_use_rs1(id_ex_use_rs1),
         .id_ex_use_rs2(id_ex_use_rs2),
         .id_csr_r_data(id_csr_r_data),
-        .id_ex_csr_r_data(id_ex_csr_r_data)
+        .id_ex_csr_r_data(id_ex_csr_r_data),
+        .id_is_m_ext(id_is_m_ext),
+        .id_m_op(id_m_op),
+        .id_ex_is_m_ext(id_ex_is_m_ext),
+        .id_ex_m_op(id_ex_m_op)
     );
     // ==================================================
 
@@ -427,13 +437,19 @@ module cpu_core(
     reg [31:0] op1;
     reg [31:0] op2;
     wire [31:0] ex_alu_result;
+    wire [31:0] ex_m_ext_result;
     alu u_alu(
         .alu_op(id_ex_alu_op),
         .op1(op1),
         .op2(op2),
         .alu_result(ex_alu_result)
     );
-
+    m_ext u_m_ext(
+        .m_op(id_ex_m_op),
+        .op1(op1),
+        .op2(op2),
+        .m_ext_result(ex_m_ext_result)
+    );
     reg branch_taken;
     always @(*) begin
         case (id_ex_alu_op)
@@ -485,6 +501,7 @@ module cpu_core(
     wire [31:0] ex_addr_result = op1 + id_ex_imm;
     wire [31:0] ex_result = store_load_use_hazard ? 32'b0 :
                             id_ex_is_load ? ex_addr_result :
+                            id_ex_is_m_ext ? ex_m_ext_result :
                             ex_alu_result ;
 
     wire [31:0] addr_base = ex_fwd_rs1 ? ex_mem_alu_result :

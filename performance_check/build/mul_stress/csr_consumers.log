@@ -1,0 +1,28 @@
+FAIL WB[12] pc=00000034 inst=304022f3 x5=94a71676
+  expected pc=00000034 x5=5f575e99
+FAIL STORE[0] pc=00000038 addr=00001000 we=f data=94a71676
+  expected pc=00000038 addr=00001000 we=f data=5f575e99
+FAIL WB[14] pc=00000040 inst=02228333 x6=c548ba92
+  expected pc=00000040 x6=18f097d3
+FAIL STORE[1] pc=00000044 addr=00001004 we=f data=c548ba92
+  expected pc=00000044 addr=00001004 we=f data=18f097d3
+FAIL WB[17] pc=00000054 inst=30419273 x4=94a71676
+  expected pc=00000054 x4=5f575e99
+FAIL WB[40] pc=000000dc inst=304022f3 x5=c2b3ad69
+  expected pc=000000dc x5=2283620b
+FAIL STORE[8] pc=000000e0 addr=00001020 we=f data=c2b3ad69
+  expected pc=000000e0 addr=00001020 we=f data=2283620b
+FAIL WB[42] pc=000000e8 inst=02228333 x6=cf52b9a4
+  expected pc=000000e8 x6=1fded42c
+FAIL STORE[9] pc=000000ec addr=00001024 we=f data=cf52b9a4
+  expected pc=000000ec addr=00001024 we=f data=1fded42c
+FAIL WB[45] pc=000000fc inst=30419273 x4=c2b3ad69
+  expected pc=000000fc x4=2283620b
+FAIL WB[68] pc=00000184 inst=304022f3 x5=7b001264
+  expected pc=00000184 x5=f686fd2b
+FAIL STORE[16] pc=00000188 addr=00001040 we=f data=7b001264
+  expected pc=00000188 addr=00001040 we=f data=f686fd2b
+CHECK run=0 cycles=4048 WB=2698 stores=769 RAM words=8192 errors=672
+CHECK run=1 cycles=4048 WB=2698 stores=769 RAM words=8192 errors=1344
+FATAL: D:\aaa1verilog_project\rv32i_soc\performance_check\mul_pipeline_stress_tb.sv:138: 1344 pipeline/reference mismatches
+       Time: 81386000  Scope: mul_pipeline_stress_tb

@@ -1,0 +1,2 @@
+PASS: multiplication unit, 41296 independent Python vectors
+D:\aaa1verilog_project\rv32i_soc\performance_check\mul_unit_stress_tb.sv:31: $finish called at 41296000 (1ps)

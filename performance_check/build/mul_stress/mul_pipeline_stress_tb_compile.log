@@ -1,0 +1,4 @@
+D:\aaa1verilog_project\rv32i_soc\src\core\m_ext.sv:11: sorry: constant selects in always_* processes are not currently supported (all bits will be included).
+D:\aaa1verilog_project\rv32i_soc\src\core\m_ext.sv:11: sorry: constant selects in always_* processes are not currently supported (all bits will be included).
+D:\aaa1verilog_project\rv32i_soc\src\core\m_ext.sv:11: sorry: constant selects in always_* processes are not currently supported (all bits will be included).
+D:\aaa1verilog_project\rv32i_soc\src\core\m_ext.sv:11: sorry: constant selects in always_* processes are not currently supported (all bits will be included).

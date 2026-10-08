@@ -29,7 +29,9 @@ module decoder(
     output reg [3:0] alu_op,
 
     output reg use_rs1,
-    output reg use_rs2
+    output reg use_rs2,
+    output reg is_m_ext,
+    output reg [2:0] m_op
 );
 
     wire [6:0] opcode = inst[6:0];
@@ -64,6 +66,8 @@ module decoder(
         csr_we=0;
         use_rs1=0;
         use_rs2=0;
+        is_m_ext = 0;
+        m_op = 0;
         case(opcode)
             `OP_R_TYPE:begin
                 wr_en=1;
@@ -82,6 +86,9 @@ module decoder(
                     endcase
                 end else if(funct7 == 7'b0100000 && (funct3==3'b0 ||funct3==3'b101))begin
                     alu_op = (funct3 == 0)? `ALU_SUB : `ALU_SRA;
+                end else if (funct7 == 7'b0000001)begin
+                    is_m_ext = 1;
+                    m_op = funct3;
                 end else begin
                     wr_en = 0;
                     use_rs1 = 0;
