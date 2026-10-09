@@ -15,7 +15,7 @@ Write-Host "Clock assumption     : $ClockMHz MHz"
 Write-Host "Iterations           : $iterations"
 Write-Host "Target timed cycles  : $targetCycles"
 Write-Host "Simulation limit     : $maxCycles"
-Write-Host "This Icarus run may take several hours."
+Write-Host "This XSim run may take several hours."
 
 & "$COREMARK_ROOT\run.ps1" `
   -Iterations $iterations `

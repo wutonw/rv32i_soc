@@ -12,7 +12,7 @@
 #define MAIN_HAS_NOARGC 1
 #define MAIN_HAS_NORETURN 0
 #define COMPILER_VERSION "riscv-none-elf-gcc"
-#define COMPILER_FLAGS   "-O2 -march=rv32i -mabi=ilp32"
+#define COMPILER_FLAGS   "-O2 -march=rv32i_zmmul -mabi=ilp32"
 #define MEM_LOCATION     "STATIC"
 
 typedef signed short   ee_s16;

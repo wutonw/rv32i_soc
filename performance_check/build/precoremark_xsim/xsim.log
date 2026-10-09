@@ -1,0 +1,70 @@
+#-----------------------------------------------------------
+# xsim v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Fri Oct  9 21:00:33 2026
+# Process ID         : 3124
+# Current directory  : D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim
+# Command line       : xsim.exe -mode tcl -source {xsim.dir/firmware_trap_tb_snapshot/xsim_script.tcl}
+# Log file           : D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim/xsim.log
+# Journal file       : D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim\xsim.jou
+# Running On         : 1c
+# Platform           : Windows 11
+# Operating System   : 26100
+# Processor Detail   : Intel(R) Core(TM) i9-14900HX
+# CPU Frequency      : 2419 MHz
+# CPU Physical cores : 24
+# CPU Logical cores  : 32
+# Host memory        : 34070 MB
+# Swap memory        : 6979 MB
+# Total Virtual      : 41049 MB
+# Available Virtual  : 7033 MB
+#-----------------------------------------------------------
+source xsim.dir/firmware_trap_tb_snapshot/xsim_script.tcl
+# xsim {firmware_trap_tb_snapshot} -autoloadwcfg -tclbatch {D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim/run.tcl} -onerror quit
+Time resolution is 1 ps
+source D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim/run.tcl
+## run all
+GUARD_WRITE cycle=317 we=1111 data=13579bdf addr=00001000
+TRAP cycle=789 pc=00000350 cause=11 epc=00000348
+MRET  cycle=905 pc=000000d4 mepc=0000034c
+MSTATUS_MRET cycle=905 value_before=00000080
+TRAP cycle=924 pc=00000378 cause=3 epc=00000370
+MRET  cycle=1040 pc=000000d4 mepc=00000374
+MSTATUS_MRET cycle=1040 value_before=00000080
+TRAP cycle=1059 pc=000003a0 cause=2 epc=00000398
+MRET  cycle=1175 pc=000000d4 mepc=0000039c
+MSTATUS_MRET cycle=1175 value_before=00000080
+TRAP cycle=1200 pc=000003dc cause=4 epc=000003d0
+MRET  cycle=1316 pc=000000d4 mepc=000003d4
+MSTATUS_MRET cycle=1316 value_before=00000080
+TRAP cycle=1347 pc=00000428 cause=6 epc=00000418
+MRET  cycle=1463 pc=000000d4 mepc=0000041c
+MSTATUS_MRET cycle=1463 value_before=00000080
+TRAP cycle=1485 pc=00000454 cause=0 epc=00000448
+MRET  cycle=1601 pc=000000d4 mepc=0000044c
+MSTATUS_MRET cycle=1601 value_before=00000080
+TRAP cycle=1652 pc=00000350 cause=11 epc=00000348
+MRET  cycle=1768 pc=000000d4 mepc=0000034c
+MSTATUS_MRET cycle=1768 value_before=00000000
+TRAP cycle=1787 pc=00000378 cause=3 epc=00000370
+MRET  cycle=1903 pc=000000d4 mepc=00000374
+MSTATUS_MRET cycle=1903 value_before=00000000
+TRAP cycle=1922 pc=000003a0 cause=2 epc=00000398
+MRET  cycle=2038 pc=000000d4 mepc=0000039c
+MSTATUS_MRET cycle=2038 value_before=00000000
+TRAP cycle=2063 pc=000003dc cause=4 epc=000003d0
+MRET  cycle=2179 pc=000000d4 mepc=000003d4
+MSTATUS_MRET cycle=2179 value_before=00000000
+TRAP cycle=2210 pc=00000428 cause=6 epc=00000418
+MRET  cycle=2326 pc=000000d4 mepc=0000041c
+MSTATUS_MRET cycle=2326 value_before=00000000
+TRAP cycle=2348 pc=00000454 cause=0 epc=00000448
+MRET  cycle=2464 pc=000000d4 mepc=0000044c
+MSTATUS_MRET cycle=2464 value_before=00000000
+PASS: all 12 firmware Trap tests passed
+      signature=600dcafe count=12 traps=12 mrets=12 cycles=4297
+$finish called at time : 43036 ns : File "D:/aaa1verilog_project/rv32i_soc/tb/firmware_trap_tb.v" Line 141
+## quit
+INFO: [Common 17-206] Exiting xsim at Fri Oct  9 21:00:36 2026...

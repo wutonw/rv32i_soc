@@ -1,0 +1,43 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Fri Oct  9 21:00:15 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/memory_hazard_tb_snapshot/xsim_script.tcl
+# xsim {memory_hazard_tb_snapshot} -autoloadwcfg -tclbatch {D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim/run.tcl} -onerror quit
+Time resolution is 1 ps
+source D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim/run.tcl
+## run all
+--- memory/forwarding/hazard stress (180 cycles) ---
+OK           lbu_after_sb RAM[64]=000000dd
+OK            lb_after_sb RAM[65]=ffffffdd
+OK           lhu_after_sh RAM[66]=0000ccdd
+OK            lw_after_sh RAM[67]=ccdd00dd
+OK            lw_after_sw RAM[68]=55667788
+OK             other_lane RAM[69]=000000cc
+OK              byte_lane RAM[70]=00000044
+OK           half_overlap RAM[71]=0000cc44
+OK         store_fwd_byte RAM[72]=0000007f
+OK           load_use_add RAM[73]=00000080
+OK              load_word RAM[74]=00000080
+OK              add_chain RAM[75]=000000ff
+OK              sub_chain RAM[76]=00000080
+OK              and_chain RAM[77]=00000080
+OK               or_chain RAM[78]=000000ff
+OK          branch_target RAM[79]=00000055
+OK             jal_target RAM[80]=00000066
+OK            jalr_target RAM[81]=00000077
+OK               jal_link RAM[82]=000000b0
+OK              jalr_link RAM[83]=000000c8
+OK           merged_word0 RAM[128]=cc4444dd
+OK                  word1 RAM[129]=55667788
+OK                  word2 RAM[130]=0000007f
+OK                  word3 RAM[131]=00000080
+PASS: memory/forwarding/hazard stress passed
+$finish called at time : 1836 ns : File "D:/aaa1verilog_project/rv32i_soc/tb/memory_hazard_tb.v" Line 207
+## quit
+INFO: [Common 17-206] Exiting xsim at Fri Oct  9 21:00:18 2026...

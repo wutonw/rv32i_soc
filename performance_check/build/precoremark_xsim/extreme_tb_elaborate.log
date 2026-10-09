@@ -1,0 +1,52 @@
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/AMDDesignTools/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe --relax -L mult_gen_v12_0_25 -L secureip -s extreme_tb_snapshot work.extreme_tb 
+Multi-threading is on. Using 30 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package xbip_utils_v3_0_16.xbip_utils_v3_0_16_pkg
+Compiling package mult_gen_v12_0_25.mult_gen_v12_0_25_viv_comp
+Compiling package mult_gen_v12_0_25.mult_gen_v12_0_25_pkg
+Compiling package unisim.vcomponents
+Compiling package mult_gen_v12_0_25.dsp_pkg
+Compiling package ieee.vital_timing
+Compiling package ieee.vital_primitives
+Compiling package unisim.vpkg
+Compiling module work.pc_reg
+Compiling module work.trap
+Compiling module work.pipe_if_id
+Compiling module work.decoder
+Compiling module work.imm_gen
+Compiling module work.regfile
+Compiling module work.csr_file
+Compiling module work.pipe_id_ex
+Compiling module work.alu
+Compiling architecture xilinx of entity mult_gen_v12_0_25.delay_line [\delay_line(c_xdevicefamily="zyn...]
+Compiling architecture xilinx of entity mult_gen_v12_0_25.delay_line [\delay_line(c_xdevicefamily="zyn...]
+Compiling architecture xilinx of entity mult_gen_v12_0_25.delay_line [\delay_line(c_xdevicefamily="zyn...]
+Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(alumodereg=0,carryinreg...]
+Compiling architecture xilinx of entity mult_gen_v12_0_25.delay_line [\delay_line(c_xdevicefamily="zyn...]
+Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(acascreg=0,alumodereg=0...]
+Compiling architecture dsp48e1_v of entity unisim.DSP48E1 [\DSP48E1(acascreg=0,alumodereg=0...]
+Compiling architecture xilinx of entity mult_gen_v12_0_25.delay_line [\delay_line(c_xdevicefamily="zyn...]
+Compiling architecture xilinx of entity mult_gen_v12_0_25.op_resize [\op_resize(ai_width=33,bi_width=...]
+Compiling architecture xilinx of entity mult_gen_v12_0_25.dsp [\dsp(c_xdevicefamily="zynq",c_a_...]
+Compiling architecture xilinx of entity mult_gen_v12_0_25.mult_gen_v12_0_25_viv [\mult_gen_v12_0_25_viv(c_verbosi...]
+Compiling architecture xilinx of entity mult_gen_v12_0_25.mult_gen_v12_0_25 [\mult_gen_v12_0_25(c_xdevicefami...]
+Compiling architecture mult_gen_0_arch of entity work.mult_gen_0 [mult_gen_0_default]
+Compiling module work.m_ext(PIPELINE_STAGE=32'b010)
+Compiling module work.pipe_ex_mem
+Compiling module work.ram
+Compiling module work.pipe_mem_wb
+Compiling module work.cpu_core
+Compiling module work.extreme_tb
+Built simulation snapshot extreme_tb_snapshot

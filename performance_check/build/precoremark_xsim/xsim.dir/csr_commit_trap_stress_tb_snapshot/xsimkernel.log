@@ -1,0 +1,7 @@
+Running: xsim.dir/csr_commit_trap_stress_tb_snapshot/xsimk.exe -simmode gui -wdb csr_commit_trap_stress_tb_snapshot.wdb -simrunnum 0 -socket 29791
+Design successfully loaded
+Design Loading Memory Usage: 21516 KB (Peak: 21516 KB)
+Design Loading CPU Usage: 109 ms
+Simulation completed
+Simulation Memory Usage: 22460 KB (Peak: 22460 KB)
+Simulation CPU Usage: 124 ms

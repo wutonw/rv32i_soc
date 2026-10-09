@@ -1,20 +1,21 @@
-"""Fail-fast RTL regression gate for the CoreMark/Fmax launcher."""
+"""Fail-fast regression gate for the CoreMark/Fmax launcher.
+
+The original six benches and the multiplication suite use the current core
+with its actual generated Vivado IP model.
+"""
 
 from __future__ import annotations
 
-import shutil
 import subprocess
+import shutil
 import sys
-import tempfile
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-RTL = [
-    "alu.v", "csr_file.v", "decoder.v", "imm_gen.v", "pc_reg.v",
-    "pipe_if_id.v", "pipe_id_ex.v", "pipe_ex_mem.v", "pipe_mem_wb.v",
-    "regfile.v", "trap.v", "cpu_core.v","m_ext.sv",
-]
+sys.path.insert(0, str(ROOT / "tb"))
+from xsim_runner import XSimProject
+
 TESTS = [
     ("pipeline_long_stress_tb", "PASS: 640 signatures, wrong-path guards, 4 mid-run resets"),
     ("csr_commit_trap_stress_tb", "PASS: CSR WB commit, forwarding, and trap ordering checks passed"),
@@ -25,53 +26,37 @@ TESTS = [
 ]
 
 
-def run(command: list[str], label: str) -> str:
-    result = subprocess.run(
-        command, cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-        text=True, encoding="utf-8", errors="replace",
-    )
-    if result.returncode:
-        raise RuntimeError(f"{label} failed (exit {result.returncode}):\n{result.stdout}")
-    return result.stdout
-
-
 def main() -> int:
     if sys.prefix == sys.base_prefix:
         raise RuntimeError("Run this through run_coremark_fmax.cmd with the project .venv")
-    for tool in ("iverilog", "vvp", "riscv-none-elf-gcc"):
-        if shutil.which(tool) is None:
-            raise RuntimeError(f"Missing required tool: {tool}")
     powershell = shutil.which("pwsh") or shutil.which("powershell")
     if powershell is None:
-        raise RuntimeError("Missing PowerShell for firmware build")
-
-    print("[stress] Building trap-test firmware...", flush=True)
-    run([powershell, "-NoProfile", "-ExecutionPolicy", "Bypass", "-File",
-         str(ROOT / "firmware" / "build.ps1")], "firmware build")
-
-    sources = [str(ROOT / "src" / "core" / name) for name in RTL]
-    sources.append(str(ROOT / "src" / "periph" / "ram.v"))
-    with tempfile.TemporaryDirectory(prefix="rv32i_stress_") as temporary:
-        for name, marker in TESTS:
-            print(f"[stress] {name}...", flush=True)
-            binary = str(Path(temporary) / f"{name}.vvp")
-            testbench = (Path(__file__).resolve().parent / f"{name}.v"
-                         if name in {"pipeline_long_stress_tb", "csr_commit_trap_stress_tb"}
-                         else ROOT / "tb" / f"{name}.v")
-            run(["iverilog", "-g2012", "-I", str(ROOT / "src"),
-                 "-s", name, "-o", binary, *sources,
-                 str(testbench)], f"compile {name}")
-            output = run(["vvp", binary], name)
-            if marker not in output or "FAIL" in output or "TIMEOUT" in output:
-                raise RuntimeError(f"{name} did not pass:\n{output}")
-            print(f"[stress] PASS {name}", flush=True)
-    print("[stress] All RTL checks passed. Starting CoreMark.\n", flush=True)
+        raise RuntimeError("Missing PowerShell")
+    print("[stress] Building trap firmware...", flush=True)
+    subprocess.run([powershell, "-NoProfile", "-ExecutionPolicy", "Bypass", "-File",
+                    str(ROOT / "firmware/build.ps1")], cwd=ROOT, check=True)
+    project = XSimProject(ROOT / "performance_check/build/precoremark_xsim")
+    benches = [(ROOT / "performance_check" if name in
+                {"pipeline_long_stress_tb", "csr_commit_trap_stress_tb"} else ROOT / "tb") /
+               (name + ".v") for name, _ in TESTS]
+    project.compile(benches)
+    for name, marker in TESTS:
+        print(f"[stress] {name}...", flush=True)
+        project.simulate(name, [], marker)
+        print(f"[stress] PASS {name}", flush=True)
+    python = sys.executable
+    mul_runner = ROOT / "tb" / "mul_dsp_stress" / "run.py"
+    print("[stress] Running multiplier/IP, forwarding, memory, CSR and trap regression...", flush=True)
+    result = subprocess.run([python, str(mul_runner)], cwd=ROOT)
+    if result.returncode != 0:
+        raise RuntimeError("multiplier/IP regression failed")
+    print("[stress] Current RTL/IP regression passed. Starting CoreMark.\n", flush=True)
     return 0
 
 
 if __name__ == "__main__":
     try:
         raise SystemExit(main())
-    except (OSError, RuntimeError) as error:
+    except (OSError, RuntimeError, subprocess.CalledProcessError) as error:
         print(f"[stress] ERROR: {error}", file=sys.stderr)
         raise SystemExit(1)

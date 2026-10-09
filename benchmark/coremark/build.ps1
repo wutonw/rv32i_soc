@@ -10,7 +10,7 @@ $OFFICIAL = Join-Path $COREMARK_ROOT "official"
 New-Item -ItemType Directory -Force -Path $COREMARK_BUILD | Out-Null
 
 riscv-none-elf-gcc `
-  -march=rv32i `
+  -march=rv32i_zmmul `
   -mabi=ilp32 `
   -O2 `
   -mstrict-align `

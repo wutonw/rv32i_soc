@@ -1,0 +1,1 @@
+--relax -L "mult_gen_v12_0_25" -L "secureip" -s "csr_commit_trap_stress_tb_snapshot" "work.csr_commit_trap_stress_tb" 

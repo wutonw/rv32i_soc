@@ -1,0 +1,31 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Fri Oct  9 20:59:58 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/csr_commit_trap_stress_tb_snapshot/xsim_script.tcl
+# xsim {csr_commit_trap_stress_tb_snapshot} -autoloadwcfg -tclbatch {D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim/run.tcl} -onerror quit
+Time resolution is 1 ps
+source D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim/run.tcl
+## run all
+OK           srrs after csrrw RAM[1024]=00000055
+OK            csrrc old value RAM[1025]=00000055
+OK           csrrwi old value RAM[1026]=00000000
+OK           csrrsi old value RAM[1027]=00000005
+OK           csrrci old value RAM[1028]=00000007
+OK           consecutive read RAM[1029]=00000055
+OK           consecutive read RAM[1030]=00000100
+OK              rd0 rs10 read RAM[1031]=00000006
+OK           path store guard RAM[1032]=00000000
+OK            mtvec preserved RAM[1033]=00000100
+OK                trap mcause RAM[1034]=00000004
+OK                  trap mepc RAM[1035]=00000064
+OK               trap mstatus RAM[1036]=00000006
+PASS: CSR WB commit, forwarding, and trap ordering checks passed (1000 cycles)
+$finish called at time : 10037 ns : File "D:/aaa1verilog_project/rv32i_soc/performance_check/csr_commit_trap_stress_tb.v" Line 191
+## quit
+INFO: [Common 17-206] Exiting xsim at Fri Oct  9 21:00:00 2026...

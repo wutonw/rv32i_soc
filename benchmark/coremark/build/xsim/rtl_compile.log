@@ -1,0 +1,94 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/aaa1verilog_project/rv32i_soc/src/core/alu.v" into library work
+INFO: [VRFC 10-311] analyzing module alu
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v" into library work
+INFO: [VRFC 10-311] analyzing module cpu_core
+WARNING: [VRFC 10-3380] identifier 'csr_ex_load_use_hazard' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:17]
+WARNING: [VRFC 10-3380] identifier 'csr_mem_load_use_hazard' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:18]
+WARNING: [VRFC 10-3380] identifier 'store_load_use_hazard' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:21]
+WARNING: [VRFC 10-3380] identifier 'branch_if_id_flush' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:23]
+WARNING: [VRFC 10-3380] identifier 'branch_id_ex_flush' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:24]
+WARNING: [VRFC 10-3380] identifier 'trap_mret_id_ex_flush' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:25]
+WARNING: [VRFC 10-3380] identifier 'store_load_use_hazard' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:26]
+WARNING: [VRFC 10-3380] identifier 'trap_mem_wb_flush' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:27]
+WARNING: [VRFC 10-3380] identifier 'id_ex_pc' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:32]
+WARNING: [VRFC 10-3380] identifier 'id_ex_valid' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:45]
+WARNING: [VRFC 10-3380] identifier 'id_ex_branch' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:46]
+WARNING: [VRFC 10-3380] identifier 'id_ex_jump_reg' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:47]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_valid' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:49]
+WARNING: [VRFC 10-3380] identifier 'if_id_valid' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:51]
+WARNING: [VRFC 10-3380] identifier 'id_trap_exit' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:55]
+WARNING: [VRFC 10-3380] identifier 'id_trap_vector' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:67]
+WARNING: [VRFC 10-3380] identifier 'id_ex_branch' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:69]
+WARNING: [VRFC 10-3380] identifier 'id_ex_jump' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:73]
+WARNING: [VRFC 10-3380] identifier 'id_ex_jump_reg' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:77]
+WARNING: [VRFC 10-3380] identifier 'ex_alu_result' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:78]
+WARNING: [VRFC 10-3380] identifier 'id_mepc_out' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:83]
+WARNING: [VRFC 10-3380] identifier 'mem_wb_valid' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:233]
+WARNING: [VRFC 10-3380] identifier 'mem_wb_valid' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:252]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_valid' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:256]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_csr_addr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:257]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_csr_w_data' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:258]
+WARNING: [VRFC 10-3380] identifier 'id_ex_valid' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:260]
+WARNING: [VRFC 10-3380] identifier 'id_ex_csr_addr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:261]
+WARNING: [VRFC 10-3380] identifier 'id_ex_csr_w_data' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:262]
+WARNING: [VRFC 10-3380] identifier 'id_ex_valid' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:281]
+WARNING: [VRFC 10-3380] identifier 'id_ex_is_load' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:282]
+WARNING: [VRFC 10-3380] identifier 'id_ex_rd_addr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:283]
+WARNING: [VRFC 10-3380] identifier 'id_ex_valid' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:284]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_valid' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:285]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_rd_addr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:286]
+WARNING: [VRFC 10-3380] identifier 'mem_wb_valid' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:291]
+WARNING: [VRFC 10-3380] identifier 'mem_wb_rd_addr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:292]
+WARNING: [VRFC 10-3380] identifier 'mem_wb_rd_addr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:293]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_valid' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:297]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_rd_addr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:298]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_rd_addr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:299]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_wb_sel' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:301]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_alu_result' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:302]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_csr_r_data' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:305]
+WARNING: [VRFC 10-3380] identifier 'id_ex_is_load' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:309]
+WARNING: [VRFC 10-3380] identifier 'id_ex_rd_addr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:310]
+WARNING: [VRFC 10-3380] identifier 'id_ex_rd_addr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:311]
+WARNING: [VRFC 10-3380] identifier 'id_ex_wb_sel' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:313]
+WARNING: [VRFC 10-3380] identifier 'ex_result' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:314]
+WARNING: [VRFC 10-3380] identifier 'id_ex_csr_r_data' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:316]
+WARNING: [VRFC 10-3380] identifier 'id_ex_rs1_data' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:317]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_is_load' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:481]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_rd_addr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:482]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_rd_addr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:483]
+WARNING: [VRFC 10-3380] identifier 'mem_wb_valid' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:484]
+WARNING: [VRFC 10-3380] identifier 'mem_wb_rd_addr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:485]
+WARNING: [VRFC 10-3380] identifier 'mem_wb_rd_addr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:486]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_jump' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:487]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_is_csr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:491]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_alu_result' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:493]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_is_csr' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:503]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_alu_result' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:505]
+WARNING: [VRFC 10-3380] identifier 'store_load_use_hazard' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:512]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_alu_result' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:517]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_is_store' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:522]
+WARNING: [VRFC 10-3380] identifier 'ex_mem_alu_result' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:523]
+WARNING: [VRFC 10-3380] identifier 'tmp_ram_s_we' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:607]
+WARNING: [VRFC 10-3380] identifier 'mem_wb_valid' is used before its declaration [D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v:618]
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/aaa1verilog_project/rv32i_soc/src/core/csr_file.v" into library work
+INFO: [VRFC 10-311] analyzing module csr_file
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/aaa1verilog_project/rv32i_soc/src/core/decoder.v" into library work
+INFO: [VRFC 10-311] analyzing module decoder
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/aaa1verilog_project/rv32i_soc/src/core/imm_gen.v" into library work
+INFO: [VRFC 10-311] analyzing module imm_gen
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/aaa1verilog_project/rv32i_soc/src/core/pc_reg.v" into library work
+INFO: [VRFC 10-311] analyzing module pc_reg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/aaa1verilog_project/rv32i_soc/src/core/pipe_ex_mem.v" into library work
+INFO: [VRFC 10-311] analyzing module pipe_ex_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/aaa1verilog_project/rv32i_soc/src/core/pipe_id_ex.v" into library work
+INFO: [VRFC 10-311] analyzing module pipe_id_ex
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/aaa1verilog_project/rv32i_soc/src/core/pipe_if_id.v" into library work
+INFO: [VRFC 10-311] analyzing module pipe_if_id
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/aaa1verilog_project/rv32i_soc/src/core/pipe_mem_wb.v" into library work
+INFO: [VRFC 10-311] analyzing module pipe_mem_wb
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/aaa1verilog_project/rv32i_soc/src/core/regfile.v" into library work
+INFO: [VRFC 10-311] analyzing module regfile
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/aaa1verilog_project/rv32i_soc/src/core/trap.v" into library work
+INFO: [VRFC 10-311] analyzing module trap
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/aaa1verilog_project/rv32i_soc/src/periph/ram.v" into library work
+INFO: [VRFC 10-311] analyzing module ram

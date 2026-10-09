@@ -1,4 +1,0 @@
-CHECK run=0 cycles=1360 WB=970 stores=193 RAM words=8192 errors=0
-CHECK run=1 cycles=1360 WB=970 stores=193 RAM words=8192 errors=0
-PASS: multiplication pipeline, traces/signatures/flush and active-multiply reset
-D:\aaa1verilog_project\rv32i_soc\performance_check\mul_pipeline_stress_tb.sv:140: $finish called at 27626000 (1ps)

@@ -1,0 +1,1 @@
+--relax -L "mult_gen_v12_0_25" -L "secureip" -s "memory_hazard_tb_snapshot" "work.memory_hazard_tb" 

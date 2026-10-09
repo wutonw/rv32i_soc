@@ -1,0 +1,1 @@
+xsim {coremark_tb_snapshot} -testplusarg MAX_CYCLES=15000000 -testplusarg CLOCK_MHZ=100 -testplusarg PROGRESS_CYCLES=1000000 -autoloadwcfg -tclbatch {D:/aaa1verilog_project/rv32i_soc/benchmark/coremark/build/xsim/run.tcl} -onerror quit

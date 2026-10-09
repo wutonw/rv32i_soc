@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/aaa1verilog_project/rv32i_soc/src/core/m_ext.sv" into library work
+INFO: [VRFC 10-311] analyzing module m_ext
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/aaa1verilog_project/rv32i_soc/benchmark/coremark/coremark_tb.v" into library work
+INFO: [VRFC 10-311] analyzing module coremark_tb

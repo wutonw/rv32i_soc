@@ -1,0 +1,62 @@
+#-----------------------------------------------------------
+# xsim v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Fri Oct  9 21:00:06 2026
+# Process ID         : 10180
+# Current directory  : D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim
+# Command line       : xsim.exe -mode tcl -source {xsim.dir/forwarding_tb_snapshot/xsim_script.tcl}
+# Log file           : D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim/xsim.log
+# Journal file       : D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim\xsim.jou
+# Running On         : 1c
+# Platform           : Windows 11
+# Operating System   : 26100
+# Processor Detail   : Intel(R) Core(TM) i9-14900HX
+# CPU Frequency      : 2419 MHz
+# CPU Physical cores : 24
+# CPU Logical cores  : 32
+# Host memory        : 34070 MB
+# Swap memory        : 6979 MB
+# Total Virtual      : 41049 MB
+# Available Virtual  : 7296 MB
+#-----------------------------------------------------------
+source xsim.dir/forwarding_tb_snapshot/xsim_script.tcl
+# xsim {forwarding_tb_snapshot} -autoloadwcfg -tclbatch {D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim/run.tcl} -onerror quit
+Time resolution is 1 ps
+source D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim/run.tcl
+## run all
+TRACE c=0 pc=00000000 ifv=0 idv=0 idpc=00000000 idinst=00000013 op1=00000000 op2=00000000 exres=00000000 emv=0 emrd=0 mwv=0 mwrd=0
+TRACE c=1 pc=00000004 ifv=0 idv=0 idpc=00000000 idinst=00000013 op1=00000000 op2=00000000 exres=00000000 emv=0 emrd=0 mwv=0 mwrd=0
+TRACE c=2 pc=00000008 ifv=1 idv=0 idpc=00000000 idinst=00000013 op1=00000000 op2=00000000 exres=00000000 emv=0 emrd=0 mwv=0 mwrd=0
+TRACE c=3 pc=0000000c ifv=1 idv=1 idpc=00000000 idinst=002081b3 op1=00000007 op2=00000005 exres=0000000c emv=0 emrd=0 mwv=0 mwrd=0
+TRACE c=4 pc=00000010 ifv=1 idv=1 idpc=00000004 idinst=00218233 op1=0000000c op2=00000005 exres=00000011 emv=1 emrd=3 mwv=0 mwrd=0
+TRACE c=5 pc=00000014 ifv=1 idv=1 idpc=00000008 idinst=003202b3 op1=00000011 op2=0000000c exres=0000001d emv=1 emrd=4 mwv=1 mwrd=3
+TRACE c=6 pc=00000018 ifv=1 idv=1 idpc=0000000c idinst=001284b3 op1=0000001d op2=00000007 exres=00000024 emv=1 emrd=5 mwv=1 mwrd=4
+TRACE c=7 pc=0000001c ifv=1 idv=1 idpc=00000010 idinst=00932023 op1=00000100 op2=00000000 exres=00000100 emv=1 emrd=9 mwv=1 mwrd=5
+TRACE c=8 pc=00000020 ifv=1 idv=1 idpc=00000014 idinst=0003a503 op1=00000200 op2=00000000 exres=00000200 emv=1 emrd=0 mwv=1 mwrd=9
+TRACE c=9 pc=00000020 ifv=1 idv=0 idpc=00000014 idinst=0003a503 op1=00000200 op2=00000000 exres=00000200 emv=1 emrd=10 mwv=1 mwrd=0
+TRACE c=10 pc=00000024 ifv=1 idv=1 idpc=00000018 idinst=001505b3 op1=0000000a op2=00000007 exres=00000011 emv=0 emrd=10 mwv=1 mwrd=10
+TRACE c=11 pc=00000028 ifv=1 idv=1 idpc=0000001c idinst=00258633 op1=00000011 op2=00000005 exres=00000016 emv=1 emrd=11 mwv=0 mwrd=10
+TRACE c=12 pc=0000002c ifv=1 idv=1 idpc=00000020 idinst=00c32223 op1=00000100 op2=00000004 exres=00000104 emv=1 emrd=12 mwv=1 mwrd=11
+TRACE c=13 pc=00000030 ifv=1 idv=1 idpc=00000024 idinst=0043a683 op1=00000200 op2=00000004 exres=00000204 emv=1 emrd=4 mwv=1 mwrd=12
+TRACE c=14 pc=00000034 ifv=1 idv=1 idpc=00000028 idinst=0043a703 op1=00000200 op2=00000004 exres=00000204 emv=1 emrd=13 mwv=1 mwrd=4
+TRACE c=15 pc=00000034 ifv=1 idv=0 idpc=00000028 idinst=0043a703 op1=00000200 op2=00000004 exres=00000204 emv=1 emrd=14 mwv=1 mwrd=13
+TRACE c=16 pc=00000038 ifv=1 idv=1 idpc=0000002c idinst=002707b3 op1=00000003 op2=00000005 exres=00000008 emv=0 emrd=14 mwv=1 mwrd=14
+TRACE c=17 pc=0000003c ifv=1 idv=1 idpc=00000030 idinst=00f32423 op1=00000100 op2=00000008 exres=00000108 emv=1 emrd=15 mwv=0 mwrd=14
+TRACE c=18 pc=00000040 ifv=1 idv=1 idpc=00000034 idinst=002082b3 op1=00000007 op2=00000005 exres=0000000c emv=1 emrd=8 mwv=1 mwrd=15
+TRACE c=19 pc=00000044 ifv=1 idv=1 idpc=00000038 idinst=00532823 op1=00000100 op2=00000010 exres=00000110 emv=1 emrd=5 mwv=1 mwrd=8
+TRACE c=20 pc=00000048 ifv=1 idv=1 idpc=0000003c idinst=0083a903 op1=00000200 op2=00000008 exres=00000208 emv=1 emrd=16 mwv=1 mwrd=5
+TRACE c=21 pc=0000004c ifv=1 idv=1 idpc=00000040 idinst=0083a983 op1=00000200 op2=00000008 exres=00000208 emv=1 emrd=18 mwv=1 mwrd=16
+TRACE c=22 pc=0000004c ifv=1 idv=0 idpc=00000040 idinst=0083a983 op1=00000200 op2=00000008 exres=00000208 emv=1 emrd=19 mwv=1 mwrd=18
+TRACE c=23 pc=00000050 ifv=1 idv=1 idpc=00000044 idinst=00198a33 op1=00000004 op2=00000007 exres=0000000b emv=0 emrd=19 mwv=1 mwrd=19
+--- forwarding signature check (120 cycles) ---
+OK            r_chain RAM[64]=00000024
+OK       lw_add_chain RAM[65]=00000016
+OK          repeat_lw RAM[66]=00000008
+OK        add_then_sw RAM[68]=0000000c
+OK      repeat_lw_add RAM[69]=0000000b
+PASS: all forwarding tests passed
+$finish called at time : 1236 ns : File "D:/aaa1verilog_project/rv32i_soc/tb/forwarding_tb.v" Line 204
+## quit
+INFO: [Common 17-206] Exiting xsim at Fri Oct  9 21:00:09 2026...

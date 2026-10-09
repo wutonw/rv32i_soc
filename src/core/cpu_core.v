@@ -14,7 +14,8 @@ module cpu_core(
     wire stall;
     assign inst_addr = pc;
     assign prom_ce = !stall;
-    assign stall = csr_ex_load_use_hazard || store_load_use_hazard || load_use_hazard ||csr_mem_load_use_hazard;
+    assign stall = csr_ex_load_use_hazard || store_load_use_hazard || load_use_hazard ||
+                    csr_mem_load_use_hazard || ex_m_ext_dsp_stall;
     // ==================================================
     // IF Stage
     wire load_use_bubble =!store_load_use_hazard && (load_use_hazard || csr_ex_load_use_hazard);
@@ -22,7 +23,7 @@ module cpu_core(
     wire if_id_flush = branch_if_id_flush || trap_if_id_flush || trap_mret_if_id_flush;
     wire id_ex_flush = branch_id_ex_flush || load_use_bubble || trap_id_ex_flush || 
                         trap_mret_id_ex_flush ||csr_mem_load_use_hazard;
-    wire ex_mem_flush = store_load_use_hazard || trap_ex_mem_flush;
+    wire ex_mem_flush = store_load_use_hazard || trap_ex_mem_flush || ex_m_ext_dsp_stall;
     wire mem_wb_flush = trap_mem_wb_flush;
     //flush and next_pc logic
     reg branch_if_id_flush;
@@ -50,7 +51,7 @@ module cpu_core(
     wire id_trap_valid = if_id_valid && (id_decode_trap_enter || id_illegal_inst);
 
     assign id_trap_enter = mem_trap_valid || ex_trap_valid ||
-                        (id_trap_valid && !ex_redirect_valid);
+                        (id_trap_valid && !ex_redirect_valid && !stall);
     wire mret_fire = id_trap_exit && if_id_valid && !stall &&
                     !mem_trap_valid && !ex_trap_valid && !ex_redirect_valid;
     wire redirect_valid = id_trap_enter || ex_redirect_valid || mret_fire;
@@ -444,12 +445,19 @@ module cpu_core(
         .op2(op2),
         .alu_result(ex_alu_result)
     );
-
-    m_ext u_m_ext(
+    wire ex_m_ext_dsp_stall;
+    m_ext #(
+        .PIPELINE_STAGE(2)
+    ) u_m_ext (
+        .clk(clk),
+        .rst_n(rst_n),
+        .id_ex_valid(id_ex_valid),
+        .id_ex_is_m_ext(id_ex_is_m_ext),
         .m_op(id_ex_m_op),
         .op1(op1),
         .op2(op2),
-        .m_ext_result(ex_m_ext_result)
+        .m_ext_result(ex_m_ext_result),
+        .m_ext_dsp_stall(ex_m_ext_dsp_stall)
     );
 
     reg branch_taken;

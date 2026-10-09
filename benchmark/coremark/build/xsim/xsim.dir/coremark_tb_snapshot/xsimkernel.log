@@ -1,0 +1,7 @@
+Running: xsim.dir/coremark_tb_snapshot/xsimk.exe -simmode gui -testplusarg MAX_CYCLES=15000000 -testplusarg CLOCK_MHZ=100 -testplusarg PROGRESS_CYCLES=1000000 -wdb coremark_tb_snapshot.wdb -simrunnum 0 -socket 28453
+Design successfully loaded
+Design Loading Memory Usage: 21496 KB (Peak: 21496 KB)
+Design Loading CPU Usage: 124 ms
+Simulation completed
+Simulation Memory Usage: 22608 KB (Peak: 22608 KB)
+Simulation CPU Usage: 277983 ms

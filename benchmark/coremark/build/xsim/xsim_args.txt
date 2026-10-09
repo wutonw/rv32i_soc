@@ -1,0 +1,3 @@
+-testplusarg "MAX_CYCLES=15000000"
+-testplusarg "CLOCK_MHZ=100"
+-testplusarg "PROGRESS_CYCLES=1000000"

@@ -1,0 +1,21 @@
+0.7
+2020.2
+Jun 16 2026
+11:10:11
+D:/aaa1verilog_project/rv32i_soc/benchmark/coremark/coremark_tb.v,1790410392,systemVerilog,,,,coremark_tb,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/proj_xilinx/rv32i_soc/rv32i_soc.gen/sources_1/ip/mult_gen_0/sim/mult_gen_0.vhd,1791550753,vhdl,,,,mult_gen_0,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/src/core/alu.v,1788864264,verilog,,D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v,D:/aaa1verilog_project/rv32i_soc/src/define.vh,alu,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/src/core/cpu_core.v,1791550776,verilog,,D:/aaa1verilog_project/rv32i_soc/src/core/csr_file.v,D:/aaa1verilog_project/rv32i_soc/src/define.vh,cpu_core,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/src/core/csr_file.v,1790503716,verilog,,D:/aaa1verilog_project/rv32i_soc/src/core/decoder.v,,csr_file,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/src/core/decoder.v,1791467743,verilog,,D:/aaa1verilog_project/rv32i_soc/src/core/imm_gen.v,D:/aaa1verilog_project/rv32i_soc/src/define.vh,decoder,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/src/core/imm_gen.v,1787559998,verilog,,D:/aaa1verilog_project/rv32i_soc/src/core/pc_reg.v,D:/aaa1verilog_project/rv32i_soc/src/define.vh,imm_gen,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/src/core/m_ext.sv,1791550765,systemVerilog,,D:/aaa1verilog_project/rv32i_soc/benchmark/coremark/coremark_tb.v,,m_ext,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/src/core/pc_reg.v,1789292150,verilog,,D:/aaa1verilog_project/rv32i_soc/src/core/pipe_ex_mem.v,,pc_reg,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/src/core/pipe_ex_mem.v,1791474703,verilog,,D:/aaa1verilog_project/rv32i_soc/src/core/pipe_id_ex.v,,pipe_ex_mem,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/src/core/pipe_id_ex.v,1791468065,verilog,,D:/aaa1verilog_project/rv32i_soc/src/core/pipe_if_id.v,,pipe_id_ex,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/src/core/pipe_if_id.v,1790501356,verilog,,D:/aaa1verilog_project/rv32i_soc/src/core/pipe_mem_wb.v,,pipe_if_id,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/src/core/pipe_mem_wb.v,1790503703,verilog,,D:/aaa1verilog_project/rv32i_soc/src/core/regfile.v,,pipe_mem_wb,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/src/core/regfile.v,1790489761,verilog,,D:/aaa1verilog_project/rv32i_soc/src/core/trap.v,,regfile,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/src/core/trap.v,1789790875,verilog,,D:/aaa1verilog_project/rv32i_soc/src/periph/ram.v,,trap,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/src/define.vh,1787968478,verilog,,,,,,,,,,,,
+D:/aaa1verilog_project/rv32i_soc/src/periph/ram.v,1788399374,verilog,,,,ram,,,,,,,,

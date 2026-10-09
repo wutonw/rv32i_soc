@@ -1,0 +1,57 @@
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Fri Oct  9 21:00:24 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/extreme_tb_snapshot/xsim_script.tcl
+# xsim {extreme_tb_snapshot} -autoloadwcfg -tclbatch {D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim/run.tcl} -onerror quit
+Time resolution is 1 ps
+source D:/aaa1verilog_project/rv32i_soc/performance_check/build/precoremark_xsim/run.tcl
+## run all
+--- extreme RV32I/CSR signature check (180 cycles) ---
+OK                      add RAM[64]=00000012
+OK                      sub RAM[65]=0000000c
+OK                      sll RAM[66]=00000006
+OK                      slt RAM[67]=00000001
+OK                     sltu RAM[68]=00000000
+OK                      xor RAM[69]=0000000c
+OK                      srl RAM[70]=00000007
+OK                      sra RAM[71]=fffffff8
+OK                       or RAM[72]=0000000f
+OK                      and RAM[73]=00000003
+OK                     slli RAM[74]=0000003c
+OK                     srai RAM[75]=fffffff8
+OK                     srli RAM[76]=3ffffffc
+OK                     slti RAM[77]=00000001
+OK                    sltiu RAM[78]=00000000
+OK                      lui RAM[79]=12345000
+OK                csrrw_old RAM[80]=00000000
+OK                 csrrs_x0 RAM[81]=0000000f
+OK                csrrc_old RAM[82]=0000000f
+OK               csrrwi_old RAM[83]=0000000c
+OK               csrrsi_old RAM[84]=0000000a
+OK               csrrci_old RAM[85]=0000000b
+OK                csr_rd_x0 RAM[86]=00000000
+OK                       lb RAM[87]=00000001
+OK                   lb_use RAM[88]=00000002
+OK                      lbu RAM[89]=0000007f
+OK                       lh RAM[90]=00007f01
+OK                      lhu RAM[91]=000080ff
+OK                       lw RAM[92]=80ff7f01
+OK                   lw_use RAM[93]=80ff7f02
+OK                 sb_sh_lw RAM[94]=beef7fef
+OK              store_final RAM[128]=beef7fef
+OK            branch_marker RAM[95]=00000001
+OK         branch_not_taken RAM[96]=00000007
+OK                 jal_link RAM[97]=00000180
+OK          jal_fallthrough RAM[98]=00000007
+OK              jalr_target RAM[99]=00000055
+OK                jalr_link RAM[100]=00000190
+PASS: extreme RV32I/CSR stress passed
+$finish called at time : 1836 ns : File "D:/aaa1verilog_project/rv32i_soc/tb/extreme_tb.v" Line 266
+## quit
+INFO: [Common 17-206] Exiting xsim at Fri Oct  9 21:00:26 2026...

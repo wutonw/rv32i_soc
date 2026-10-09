@@ -1,12 +1,35 @@
-module m_ext(
+module m_ext #(
+    parameter int unsigned PIPELINE_STAGE = 2
+)(
+    input logic clk,
+    input logic rst_n,
+    input logic id_ex_valid,
+    input logic id_ex_is_m_ext,
+
     input logic [2:0] m_op,
     input logic [31:0] op1,
     input logic [31:0] op2,
-    output logic [31:0] m_ext_result
+    output logic [31:0] m_ext_result,
+
+    output logic m_ext_dsp_stall
 );
     logic signed [65:0] full_product;
     logic signed [32:0] signed_op1;
     logic signed [32:0] signed_op2;
+
+    localparam integer WIDTH = (PIPELINE_STAGE > 0) ? $clog2(PIPELINE_STAGE + 1) : 1;
+    logic [WIDTH-1:0] stage_reg;
+    
+    always_ff @(posedge clk)begin
+        if (!rst_n) begin
+            stage_reg <= 0;
+        end else if (id_ex_valid && id_ex_is_m_ext && stage_reg < PIPELINE_STAGE) begin
+            stage_reg <= stage_reg + 1;
+        end else begin
+            stage_reg <= 0;
+        end
+    end
+    assign m_ext_dsp_stall = id_ex_valid && id_ex_is_m_ext && (stage_reg < PIPELINE_STAGE);
 
     always_comb begin
         if (m_op == 3'b001 || m_op == 3'b010) begin
@@ -21,13 +44,20 @@ module m_ext(
             signed_op2 = {1'b0, op2}; 
         end
 
-        full_product = signed_op1 * signed_op2;
+        //full_product = signed_op1 * signed_op2;
         case (m_op)
             3'b000: m_ext_result = full_product[31:0]; // MUL
             3'b001,3'b010,3'b011: m_ext_result = full_product[63:32]; // MULH,MULHSU,MULHU
             default: m_ext_result = 32'b0;
         endcase
     end
+
+    mult_gen_0 u_mult_gen_0 (
+        .CLK(clk),
+        .A(signed_op1),
+        .B(signed_op2),
+        .P(full_product)
+    );
 endmodule
 
     //大坑

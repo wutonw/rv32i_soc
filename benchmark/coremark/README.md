@@ -11,6 +11,8 @@ powershell -ExecutionPolicy Bypass -File benchmark/coremark/run.ps1
 
 当前默认运行 1 次迭代，用于 RTL 功能验证和性能估算。testbench 在 CoreMark 的
 `start_time()`/`stop_time()` 标记之间统计真实周期，并由官方 CRC 校验决定 PASS。
+当前使用 Vivado XSim 和实际生成的乘法 IP，编译参数为
+`-O2 -march=rv32i_zmmul -mabi=ilp32`，启用硬件乘法但不生成 DIV/REM。
 
 按当前单次实测周期，在 100 MHz 下模拟至少 10 秒的长测：
 
@@ -18,7 +20,8 @@ powershell -ExecutionPolicy Bypass -File benchmark/coremark/run.ps1
 powershell -ExecutionPolicy Bypass -File benchmark/coremark/run_10s.ps1
 ```
 
-这会执行 855 次迭代、模拟约 10 亿个 CPU 周期。Icarus 可能需要数小时，期间会
+默认迭代数按旧版每次周期估算；更改核或启用硬件乘法后，应重新测量并通过
+`-CyclesPerIteration` 更新估计。这类 XSim 长测可能需要数小时，期间会
 每 5000 万周期打印一次进度。可用 `-ClockMHz` 指定计划使用的板级时钟频率。
 
 注意：这是短时仿真结果，不满足 CoreMark 官方“至少运行 10 秒”的正式上报规则；

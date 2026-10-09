@@ -1,0 +1,14 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/aaa1verilog_project/rv32i_soc/src/core/m_ext.sv" into library work
+INFO: [VRFC 10-311] analyzing module m_ext
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/aaa1verilog_project/rv32i_soc/performance_check/pipeline_long_stress_tb.v" into library work
+INFO: [VRFC 10-311] analyzing module pipeline_long_stress_tb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/aaa1verilog_project/rv32i_soc/performance_check/csr_commit_trap_stress_tb.v" into library work
+INFO: [VRFC 10-311] analyzing module csr_commit_trap_stress_tb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/aaa1verilog_project/rv32i_soc/tb/forwarding_tb.v" into library work
+INFO: [VRFC 10-311] analyzing module forwarding_tb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/aaa1verilog_project/rv32i_soc/tb/memory_hazard_tb.v" into library work
+INFO: [VRFC 10-311] analyzing module memory_hazard_tb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/aaa1verilog_project/rv32i_soc/tb/extreme_tb.v" into library work
+INFO: [VRFC 10-311] analyzing module extreme_tb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/aaa1verilog_project/rv32i_soc/tb/firmware_trap_tb.v" into library work
+INFO: [VRFC 10-311] analyzing module firmware_trap_tb
