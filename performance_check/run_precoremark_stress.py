@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parent.parent
 RTL = [
     "alu.v", "csr_file.v", "decoder.v", "imm_gen.v", "pc_reg.v",
     "pipe_if_id.v", "pipe_id_ex.v", "pipe_ex_mem.v", "pipe_mem_wb.v",
-    "regfile.v", "trap.v", "cpu_core.v",
+    "regfile.v", "trap.v", "cpu_core.v","m_ext.sv",
 ]
 TESTS = [
     ("pipeline_long_stress_tb", "PASS: 640 signatures, wrong-path guards, 4 mid-run resets"),

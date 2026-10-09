@@ -444,12 +444,14 @@ module cpu_core(
         .op2(op2),
         .alu_result(ex_alu_result)
     );
+
     m_ext u_m_ext(
         .m_op(id_ex_m_op),
         .op1(op1),
         .op2(op2),
         .m_ext_result(ex_m_ext_result)
     );
+
     reg branch_taken;
     always @(*) begin
         case (id_ex_alu_op)
@@ -500,7 +502,7 @@ module cpu_core(
 
     wire [31:0] ex_addr_result = op1 + id_ex_imm;
     wire [31:0] ex_result = store_load_use_hazard ? 32'b0 :
-                            id_ex_is_load ? ex_addr_result :
+                            //id_ex_is_load ? ex_addr_result :
                             id_ex_is_m_ext ? ex_m_ext_result :
                             ex_alu_result ;
 
@@ -600,7 +602,7 @@ module cpu_core(
     ram u_ram(
         .clk(clk),
         .we(mem_ram_s_we),
-        .rd_addr(ex_result),//提前吃地址
+        .rd_addr(ex_addr_result),//提前吃地址
         .wr_addr(ex_mem_alu_result),
         .ram_w_data(mem_ram_w_data),
         .ram_r_data(mem_raw_ram_r_data)
